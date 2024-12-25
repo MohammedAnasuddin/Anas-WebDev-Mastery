@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1: Green Themed Signup</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0px;
+            padding: 5px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            background-color: #26dd2f;
+            border-color: #025706;
+            width: 400px;
+            height: 350px;
+            padding: 15px;
+        }
+
+        #horizontal-form {
+            display: flex;
+            flex-direction: row;
+            width: 180px;
+            
+        }
+
+        input {
+            width: 360px;
+            height: 35px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        input:hover {
+            border-radius: 10px;
+            border-color: #2507a8;
+        }
+
+        button {
+            border-radius: 15px;
+            height: 70px;
+            width:80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Green Login Assignment-1</h2>
+        <form>
+            <input type="email" placeholder="Email">
+        </form>
+        <form id="horizontal-form">
+            <input type="text" placeholder="First Name" id="horizontal">
+            <input type="text" placeholder="Second Name" id="horizontal">
+        </form>
+        <input type="password" placeholder="Password">
+        <button>Submit</button>
+    </div>
+
+</body>
+
+</html>
