@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            /*> We are consuming whole viewport for our components */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: #a19b9b;
+            border-radius: 4px;
+            padding: 30px;
+            width: 300px;
+        }
+
+        h2 {
+            color: #8a05ac;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #dfa6f0;
+            border: 1px solid black;
+        }
+
+        input:hover {
+            border-color: #8a05ac;
+            border-width: 3px;
+        }
+
+        button {
+            background-color: #1216dd;
+            color: whitesmoke;
+            padding: 10px;
+            border-radius: 8px;
+            border-color: none;
+        }
+
+        button:hover {
+            background-color: #585ae2;
+            border-radius: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+
+        <h2>Login</h2>
+        <form>
+            <input type="email" name="" id="" placeholder="Email">
+            <input type="password" name="" id="" placeholder="Password">
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
