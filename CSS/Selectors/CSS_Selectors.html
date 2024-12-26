@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        div>p {
+            /* This is not slected descendant(childs at lower levels */
+            background-color: tomato;
+            padding: 10px;
+        }
+
+        div p {
+            /* 
+             Every child is green now 
+            */
+            /* background-color: lightgreen;
+            padding: 10px; */
+        }
+
+        div[class="Holding-Descendant"]>p {
+            background-color: lightgreen;
+            padding: 10px;
+        }
+
+        h1~h2 {
+            padding: 5px;
+            border-width: 20px;
+            border-color: chartreuse;
+            font-weight: bolder;
+
+        }
+        h3:hover{
+            color:rgb(81, 2, 88);
+        }
+        h3::first-letter{
+            font-style: italic;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Direct Childs</h1>
+        <p>Child-1</p>
+        <p>Child-2</p>
+        <p>Child-3</p>
+        <p>Child-4</p>
+        <h2>Descendant Childs</h2>
+        <div class="Holding-Descendant">
+            <p>Descendant-1</p>
+            <p>Descendant-2</p>
+            <p>Descendant-3</p>
+        </div>
+    </div>
+    <h2 style="color: red;">Im h2 but not a Child nor Sibling</h2>
+    <h3>Hover ME</h3>
+</body>
+
+</html>
