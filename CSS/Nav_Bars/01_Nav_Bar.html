@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav-Bar Horizontal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #080808;
+            color: whitesmoke;
+
+        }
+
+        .nav-container {
+            margin-bottom: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav1 {
+            /* border: 2px solid red; */
+            border-radius: 4px;
+            background-color: #1c1369;
+            padding: 10px;
+        }
+
+        .nav1 ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav1 li {
+            display: inline;
+        }
+
+        .nav1 a {
+            text-decoration: none;
+            color: beige;
+            /* background-color: crimson; */
+            padding: 5px 10px;
+            border-radius: 4px;
+            position: relative;
+
+        }
+
+        .nav1 .login-btn {
+            background-color: brown;
+            color: beige;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: crosshair;
+        }
+
+        .nav1 a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5%;
+            bottom: 0;
+            left: 0;
+            background-color: crimson;
+            transform: scaleX(0);
+            transform: transform 0.3s ease-in-out;
+        }
+
+        .nav1 a:hover::after {
+            transform: scaleX(1);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="nav1">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><button class="login-btn">Login</button></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>
