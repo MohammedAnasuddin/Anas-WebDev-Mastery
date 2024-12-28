@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar with Dropdown</title>
+    <style>
+        .nav3 {
+            background-color:crimson;
+            padding: 10px;
+        }
+
+        .nav3 ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav3 a{
+            text-decoration: none;
+            color: beige;
+            padding: 10px;
+            display: block;
+        }
+        .nav3 .dropdown-content{
+            display: none;
+        }
+        .nav3 .dropdown-list:hover .dropdown-content{
+            display: block;
+            position: absolute;
+            background-color: forestgreen;
+        }
+        .nav3 .dropdown-list:hover .dropdown-content a:hover  {
+            color: forestgreen;
+            background-color: azure;
+        }
+        .login-btn{
+            padding:5px;
+            border: none;
+            border-radius: 3px;
+            padding : 4px 10px;
+        }
+        .login-btn:hover{
+            background-color: forestgreen;
+            color:floralwhite;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="nav3">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="dropdown-list">
+                    <a href="#">About Us</a>
+                    <div class="dropdown-content">
+                        <a href="#">Vision</a>
+                        <a href="#">Mission</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </li>
+                <li><a href="#">Products</a></li>
+                <li><button class="login-btn">Login</button></li>
+            </ul>
+        </nav>
+    </div>
+
+</body>
+
+</html>
