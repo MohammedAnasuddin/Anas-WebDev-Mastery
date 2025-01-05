@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID Layout</title>
+    <style>
+        .grid-container>div{
+            background-color: forestgreen;
+            border: 1px solid black;
+            color: azure;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-container{
+            margin: 2px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,50px);
+            gap: 2px;
+            grid-template-areas: 'header header header' 'sidebar carea carea' 'footer footer footer';
+        }
+      
+
+
+    </style>
+</head>
+<body style="background-color: lightslategray;">
+    <div class="grid-container">
+      <div style=" grid-area: header;">Header</div>
+      <div style="background-color: crimson;  grid-area: sidebar;">Sidebar</div>
+      <div style=" grid-area: carea;">Content</div>
+      <div style="background-color: crimson; grid-area: footer;">Footer</div>
+    </div>
+</body>
+</html>
