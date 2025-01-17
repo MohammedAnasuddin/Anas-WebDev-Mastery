@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="bg-slate-900 absolute p-5 m-3 grid grid-cols-3 gap-[2px] w-screen h-screen ">
+
+    <div class="p-5 w-[250px] h-[400px] border-2 mt-5 bg-white text-blue-900 absolute">
+        I'm the Parent
+        <h2 class="text-xl font-bold mt-5">Absolute</h2>
+        <div class="mt-2 p-2 mr-3 absolute w-fit h-max border-2 bg-emerald-600 mb-3 text-white hover:bottom-0">I'm Absolute: I
+            move according to my parent container, Hover Me I would be on other corner my parent</div>
+        </div>
+        
+        
+        <div class="p-5 w-[250px] h-[400px] bg-white text-blue-900 absolute mt-5 col-start-2">
+            I'm the Parent
+            <h2 class="text-xl font-bold mt-5">Relative</h2>
+        <div class="relative p-1 mt-2 w-fit h-max border-2  bg-fuchsia-900 text-white hover:-bottom-2">I'm
+            Relative(hover Me) : See I move from my original Position not according to my parent</div>
+    </div>
+</body>
+
+</html>
