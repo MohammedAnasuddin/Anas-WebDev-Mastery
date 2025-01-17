@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimension TailwndCSS</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body>
+
+    <div class="w-screen h-screen p-8">
+
+        <div class="w-96 h-6 bg-slate-200">
+            <div class="w-4 h-1 bg-slate-400"></div>
+        </div>
+        <div class="ref" style="font-size: 16px;">This font is 16px Lorem ipsum dolor sit amet consectetur, adipisicing
+            elit. Consequuntur, quam.</div>
+        <div class="ref" style="font-size: 1rem;">This font is 1rem Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Vitae, quos?</div>
+
+
+        <h2 class="text-xl font-bold mt-5">min-content,max-content,fit-content</h2>
+        <div class="w-min border-2 border-red-500 m-2">min-content : width is equal to content coz its the largest word
+        </div>
+        <div class="w-max border-2 border-red-500 m-2">max-content: I don't care for any words and I don't even wrap
+            content Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique praesentium animi beatae ipsum
+            tempore eligendi nobis id, libero assumenda iure!</div>
+        <div class="w-fit border-2 border-red-500 m-2">fit-content: I'm max-content but I allow wrap to prevent overflow
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eum tenetur labore aliquam minus quas quo
+            odio possimus, cum ducimus reprehenderit similique. Veritatis soluta deleniti hic excepturi natus eligendi
+            nam magni facere? Nostrum, sit voluptas quis dolor explicabo animi dolores. Velit omnis similique laboriosam
+            enim earum ipsum repudiandae explicabo veritatis est reiciendis? Incidunt excepturi obcaecati dolorem
+            inventore delectus dolores fuga pariatur eaque voluptatum earum, ipsa ipsam ea similique maxime, atque
+            illum, nesciunt reiciendis? Provident tenetur ab incidunt, eum assumenda, doloremque accusantium labore
+            suscipit nihil at iusto recusandae. Veritatis ut doloribus accusamus nulla! Deserunt esse veniam velit quia
+            incidunt assumenda odit.</div>
+
+        <div class="w-dvw h-8 bg-slate-400">Dynamic Viewport width</div>
+        <div class="w-screen h-8 bg-slate-700 mt-1 text-white">Screen Viewport width</div>
+
+
+        <h2 class="text-xl font-bold mt-5">min-content,max-content,fit-content for height</h2>
+        <div class="h-max">h-min: The content is using h-min Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia suscipit doloremque soluta dolore quis earum, vitae libero voluptas odit at eveniet, harum repudiandae magnam nesciunt fugit, maiores reiciendis debitis. Labore adipisci nulla, ut sint, laudantium nobis cumque animi laboriosam laborum expedita temporibus dolore tempora debitis, ea dolorum facere corporis consequatur.</div>
+        
+        <h2 class="text-xl font-bold mt-5 w-24 min-w-24 min-h-32 border-2 border-red-500 box-content">min-width: I can't be shrinked below specified dimension here (96px)</h2>
+        
+       
+    </div>
+
+</body>
+
+
+
+
+</html>
