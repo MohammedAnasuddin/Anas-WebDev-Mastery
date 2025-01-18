@@ -6,24 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Positions</title>
     <link rel="stylesheet" href="./output.css">
+    <style>
+        div {
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
-<body class="bg-slate-900 absolute p-5 m-3 grid grid-cols-3 gap-[2px] w-screen h-screen ">
-
-    <div class="p-5 w-[250px] h-[400px] border-2 mt-5 bg-white text-blue-900 absolute">
-        I'm the Parent
-        <h2 class="text-xl font-bold mt-5">Absolute</h2>
-        <div class="mt-2 p-2 mr-3 absolute w-fit h-max border-2 bg-emerald-600 mb-3 text-white hover:bottom-0">I'm Absolute: I
-            move according to my parent container, Hover Me I would be on other corner my parent</div>
+<body class="bg-slate-900 p-3 ">
+    <div
+        class="p-3 m-3 absolute grid grid-cols-[260px,260px,260px,260px] grid-rows-[650px] w-full h-[1500px] gap-2">
+       
+        <div class="p-5 w-[250px] h-[400px] mt-5 bg-white text-blue-900 absolute col-start-1">
+            I'm the Parent
+            <h2 class="mt-5 text-xl font-bold">Absolute</h2>
+            <div
+                class="green_card  absolute p-2 mt-2 mb-3 mr-3 font-semibold text-white border-2 w-[140px] h-max bg-emerald-600 hover:bottom-0 hover:right-0">
+                I'm
+                Absolute: I
+                move according to my parent container, Hover on Me I would be on other corner my parent <p class="inline bg-blue-600 opacity-95">To hover specify z-index as z-10 in the green card</p></div>
         </div>
-        
-        
+
+
         <div class="p-5 w-[250px] h-[400px] bg-white text-blue-900 absolute mt-5 col-start-2">
             I'm the Parent
-            <h2 class="text-xl font-bold mt-5">Relative</h2>
-        <div class="relative p-1 mt-2 w-fit h-max border-2  bg-fuchsia-900 text-white hover:-bottom-2">I'm
-            Relative(hover Me) : See I move from my original Position not according to my parent</div>
+            <h2 class="mt-5 text-xl font-bold">Relative</h2>
+            <div
+                class="relative z-50 p-1 mt-2 font-semibold text-white border-2 w-fit h-max bg-fuchsia-900 hover:-bottom-2">
+                I'm
+                Relative(hover Me) : See I move from my original Position not according to my parent</div>
+        </div>
+
+
+        <div class="p-5 w-[250px] h-[400px] bg-white text-blue-900 absolute mt-5 col-start-3">
+            I'm the Parent
+            <h2 class="mt-5 text-xl font-bold">Fixed</h2>
+            <div class="fixed p-2 m-2 font-semibold text-white w-36 h-max bg-rose-600">I'm Fixed: Just like my name I
+                don't
+                change my position throughout the scroll. You Scroll I will follow Along</div>
+        </div>
+
+        <div class="p-5 w-[250px] h-[600px] bg-white text-blue-900 absolute mt-5 col-start-4">
+            I'm the Parent
+            <h2 class="mt-5 text-xl font-bold">Sticky</h2>
+            <div class=" text-green-600 font-bold w-full top-3">--------------------------------
+            </div>
+            <!-- -Line is relative for visualization purpose  -->
+            <div class="sticky top-6 p-2 m-2 font-semibold text-white w-fit h-max bg-blue-600">I'm Sticky(Scroll): I will
+                move after having a <p class="inline bg-green-600 opacity-95">specified distance between element and viewport</p> after that You
+                Scroll I will
+                follow Along
+            </div>
+
+        </div>
+
     </div>
+
+    <div class="relative top-full pl-3 text-lg pr-1 mr-2 font-bold text-white w-[full] h-[450px] bg-amber-500/40"> All the Elements are out of this Normal Flow Hence When Im added I have been added at beginning only <p class="inline bg-fuchsia-900 opacity-95 font-bold">relative does not pops out of normal flow</p>
+    <div class="w-[200px] mr-2 mt-6 p-2 h-[250px] border-2 border-white font-semibold absolute right-3">To add new elements after positioned elements new elements also needs to be positioned using absolute, relative, fixed, sticky based on the need</div>
+    </div>
+    </div>
+
+
+    <div class="w-[225px] h-max font-bold text-white relative left-[1100px] mt-2">I'm Out since im added using relative(I still look beside sticky parent card bit im not sticky parent card is out of normal flow)</div>
 </body>
 
 </html>
