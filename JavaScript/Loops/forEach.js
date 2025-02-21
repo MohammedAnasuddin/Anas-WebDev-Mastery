@@ -37,12 +37,12 @@ let arr = ["one","two","three","four"];
     arr.forEach(function(_,index,array){
        console.log("Current Element: ",array[index]," Next Element: ",array[++index])
     })
-    //Note: table prints four times
+
 
 //. Using External Functions and Asynchronous functions
     //x No arguments should be used while calling 
     //- Use them at function declaration
-    //x .forEach() does nit wait for promises or async functions
+    //x .forEach() does not wait for promises or async functions
     //Note: Uncomment the code and execute to observe
 
     try{

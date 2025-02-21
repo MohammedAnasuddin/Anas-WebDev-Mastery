@@ -18,5 +18,13 @@ const heyYou = hey + ' ' + you;
 //> Hoisting is JavaScript's default behavior of moving declarations to the top.
 
 //> let, const, and class as non-hoisting, because the temporal dead zone strictly forbids any use of the variable before its declaration.
-//Tip: A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until the moment the computer completely initializes it with a value.
+//Tip: start of the block until code execution reaches the place where the variable is declared and initialized.
+{
+    /*
+    This is TDZ you cant access the variable here
+    
+    
+    */
+   let b4 = "Anas"
+}
 

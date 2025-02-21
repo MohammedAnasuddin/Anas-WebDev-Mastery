@@ -5,7 +5,7 @@
 >           Statements
 >        }
 */
-
+//x for-in does not allow asynchronous operations
 //. components of for - in
 //> variable:
     //> used ot iterate over properties
@@ -34,7 +34,7 @@
     }
 
 
-//. New Propertes in a object
+//. New Properties in a object
     //x for-in does not traverse properties added during the traversal
     //- since it creates a copy of all properties present in the obj before starting the loop
 
@@ -67,4 +67,4 @@ for(iterator in user_schema){
 console.timeEnd("Looping only on user defined properties");
 
 //> In first case it takes 4.27ms and second case 3.99ms
-//X Not always works sometimes time in second case is grater than first one
+//X Not always works sometimes time in second case is greater than first one

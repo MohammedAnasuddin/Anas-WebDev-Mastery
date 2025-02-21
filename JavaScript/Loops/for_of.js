@@ -7,9 +7,9 @@ for( let character of user_name){
     console.log(character);
     
 }
-//> Iterator can be const if it's no reassigned in the statements again 
+//> Iterator can be const if it's not reassigned in the statements again 
 //- i.e, a new variable is created for every iteration
-//x for-of does not allow asynchronous operations
+
 
 
 //Note: Syntax similar to for-in
@@ -25,4 +25,17 @@ for(let char of user_name){
   }
   console.log(char)
   //- only ser in new lines will be printed
+}
+
+//. Asynchronous operations in for-of
+
+async function printFor2s(char){
+setInterval('2000')
+console.log(char)
+}
+
+for(let item of user_name){
+ await setTimeout( async ()=>{
+  console.log(item)
+ },2000);
 }
