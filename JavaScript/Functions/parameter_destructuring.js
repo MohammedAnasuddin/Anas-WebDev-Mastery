@@ -16,11 +16,11 @@ function pd_one([one,two,three,four]){
 pd_one(array) //a: 1 b: 2 c: 3 d: 4
 //- The array elements unpacked into independent variables
 
-//Note: These are postioned senstive
+//Note: These are postion senstive
 let wrong_array = [1,4,2,3]
 pd_one(wrong_array) //a: 1 b: 4 c: 2 d: 3 
 
-//Tip: TO skip a array element just leave a comma spearated blank space
+//Tip: TO skip a array element just leave a comma separated blank space
 function pd_skip([one,two, ,four]){
     console.log(`a:${one} b:${two}  d:${four} `)
 

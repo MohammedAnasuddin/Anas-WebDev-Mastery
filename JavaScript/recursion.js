@@ -65,3 +65,6 @@ function stopBase(count){
 
 
 stopBase(5)
+
+
+//- recursion itself uses a stack: the function stack.

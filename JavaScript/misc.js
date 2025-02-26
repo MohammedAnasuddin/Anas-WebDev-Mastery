@@ -28,3 +28,27 @@ const heyYou = hey + ' ' + you;
    let b4 = "Anas"
 }
 
+
+
+//. Scope Chain
+//> If a value is not found in current scope it will be searched in the parent scope
+//> This is will continue until global scope.
+//> If still not found throw a reference error 
+
+
+{
+//> Suppose this a block scope
+let a = 'a'
+
+{
+    //> Parent Scope
+
+
+    {
+        //> Child Scope
+        console.log(`I'm have logged a global variable '${a}' in a child scope`);   
+    }
+}
+
+
+}
