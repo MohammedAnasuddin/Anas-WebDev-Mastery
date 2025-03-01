@@ -1,12 +1,12 @@
 //Tip: Refer this from misc to understand the below
 
 
-//. Arrow Functions
+//. Arrow Functions aka Fat Arrow
 //>Syntax:
 /* 
 >  () => {}
 */
-
+//Tip: Don't use arrow functions for methods of Objects
 
 //Tip: 
 //- Parenthesis can be omiited if only single parameter
