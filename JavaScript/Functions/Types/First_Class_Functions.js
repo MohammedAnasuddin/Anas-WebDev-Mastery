@@ -51,10 +51,10 @@ const user_message = greet_user("leaving")
 //> we can call it now
 user_message('Anas') //Sad to see you go Anas Bye
 
-//. functions in varaible
+//. functions in variable
 //> Above the function is stored in user_message variable
 //Tip: Always use const for storing functions since we dont wan tot change the declartion
-
+//- If stored in variable the function can only be called using variable_name()
 
 
 //. Higher order functions
