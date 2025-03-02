@@ -73,3 +73,25 @@
     console.timeLog("Timer","Hello This is the time")
     console.timeEnd("Timer")
 
+//. Tracking Calls
+//. console.trace
+//>displays a trace that show how the code ended up at a certain point.
+function parent(){
+    child()
+}
+
+function child(){
+    grand_Child()
+}
+
+function grand_Child(){
+    console.log("I'm Grand Child and you can see how execution reached med below:")
+    console.trace()
+     //- the output will be red it's not a error
+    //Tip: To get a leaner version use log with Error().stack
+    
+
+}
+
+parent()
+   
