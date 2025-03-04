@@ -1,6 +1,10 @@
 //. Arrays
 //> A object enables storing collection of values in a single variable.
 
+
+
+
+
     //. Resizable
     //> the length is dynamic, elements can be removed and added.
     //> If the index used by the operation on array exceeds current length
@@ -41,3 +45,5 @@ for(let i=0;i<array.length;i++){
 }
 
 //> All the elements after 4th element are removed.
+
+//x Length cannot be more than 2^32-1
