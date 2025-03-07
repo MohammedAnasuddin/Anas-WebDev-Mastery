@@ -20,3 +20,8 @@
     //. 2. Using Spread Operator 
     let arr_3 = [...arr]
     console.table(arr_3)
+
+
+//> erative methods on arrays, such as forEach, map, filter, reduce, and others, 
+//> generally do not traverse new elements added to 
+//> the array during the iteration process
