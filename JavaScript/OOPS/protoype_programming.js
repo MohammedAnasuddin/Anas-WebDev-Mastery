@@ -1,8 +1,8 @@
 //> JS is prototype based programming language
-//> THE OOPS of JS is a mask on th proto;type based programming 
+//> THE OOPS of JS is a mask on the prototype based programming 
 //> created to help the dev for easy development
 
-//> JS is OOPL but bts its Prototype based itself
+//> JS is OOPL but its Prototype based itself
 
 //. Prototype mean extra properties and functionalities given for the data type
     //> Prototypes are the mechanism by which JavaScript objects inherit features from one another.
@@ -17,17 +17,17 @@
 
 //. Accessing the properties
     //> On Accessing a property:
-        //> 1. Initially searched  n the object itself
+        //> 1. Initially searched in the object itself
         //> 2. If not found , search in prototype of that object
         //> 3. Even not found , search in the prototype of prototype object
-        //> 4. 2 and 3 are continued until end of property vhain
+        //> 4. 2 and 3 are continued until end of property chain
         //> 5. if property not found "undefined" is returned.
 
 //Tip: To get all properties of a dt use dt_name and hit enter to list all prototypes 
 
 //. Accessing the prototype
     //> uses Dunder (2 consecutive underscores) 
-    //> Syntax: dt_name.__proto__
+    //> Syntax: dt_name.__proto__  
     let computer = {brand:"dell"}
     console.log("computer",computer.__proto__);
     //- NodeJS shows null to default prototype properties
@@ -86,7 +86,7 @@ let demo = new Number(3)
 //demo.prototype.toWord = function(){return 'three'} //x is wrong since demo is instance
 //- use Number(Here Constructor) 
 
-    //- if you just use Obj.prototype = new_obj  whole prototype is  changed and refernce constructor is lost
+    //- if you just use Obj.prototype = new_obj  whole prototype is  changed and reference of the constructor is lost
         let animal = function(){}
         console.log(animal.prototype.constructor);   //[Function: animal]
         let living_creature = function(){}
