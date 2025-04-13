@@ -59,14 +59,14 @@ let a = 'a'
 //>  refers to the context where a piece of code, such as a function's body, is supposed to run.
 //> represents how function is connected to the context
 
-//Note : this values are:
+//Note : .this values are:
     //> direct -> global object(browser: window, nodeJS: emptyObject])
     //> regular function-> object of the project.
   
-  //Note:In non–strict mode, this is always a reference to an object. In strict mode, it can be any value. 
+  //Note:In non–strict mode, .this is always a reference to an object. In strict mode, it can be any value. 
 
-//>The value of this depends on in which context it appears: function, class, or global.
+//>The value of .this depends on in which context it appears: function, class, or global.
         //. In functions:
-        //> value of this depends on how the function is called.
-        //> Regular functions: he value of this is the object that the function is accessed on.
-        //> Arrow functions differ in their handling of this: they inherit this from the parent scope at the time they are defined.
+        //> value of .this depends on how the function is called.
+        //> Regular functions: the value of .this is the object that the function is accessed on.
+        //> Arrow functions differ in their handling of .this: they inherit .this from the parent scope at the time they are defined.

@@ -1,7 +1,7 @@
 //. Encapuslation
 //> Restricting direct access to the data object
 
-//> use # before the values to encapsulate
+//> use # before the values to encapsulate the value
 
 class Bank{
 #user_pin =''

@@ -1,5 +1,6 @@
 //> console is a object which provides access to the debugging console of the browser
 //- console allows format specifiers like %d or %o 
+//- console methods return undefined after printing logs
 
     let demo = 14
     console.log("The Value of is: %d",14)
@@ -15,9 +16,9 @@
     console.assert(num == 2, "num not equals to 2")
 
 //> console.directxml(DOM_selector)
-//- Prints all the elements selected by the selector ina tree manner  
+//- Prints all the elements selected by the selector in a tree structure  
 
-//Tip: Works in HTML not in NodeJS Environment
+//Tip: Works with HTML not in NodeJS Environment
 /* <script src="console_Methods.js">
    const parent = document.getElementsByClassName("parent")
    console.dirxml(parent)
@@ -85,7 +86,7 @@ function child(){
 }
 
 function grand_Child(){
-    console.log("I'm Grand Child and you can see how execution reached med below:")
+    console.log("I'm Grand Child and you can see how execution reached me below:")
     console.trace()
      //- the output will be red it's not a error
     //Tip: To get a cleaner version use log with Error().stack

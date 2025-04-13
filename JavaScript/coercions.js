@@ -1,5 +1,5 @@
 //- In JS, the operator decides the data type of operands in the expression.
-//- The operator only converts the the operand for teh expression itself not completely
+//- The operator only converts the the operand for the evaluation of expression not operand default data type
 //Tip: Refer this article https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/
 
 

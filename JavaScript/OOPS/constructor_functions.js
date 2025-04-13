@@ -43,7 +43,7 @@ let myCar = new Car("Tata")
 console.log(myCar.getBrand());
 
 
-//. Prototypes nad Constructor Function
+//. Prototypes and Constructor Function
 //Tip: Use .prototype for constructor functions
 //- Since .setprototypeOF() works only for objects
 
@@ -54,7 +54,7 @@ let myCar2 = new Car("Rolls Royce","Luxury")
 console.log("myNewCar-type:",myCar2.getType());
 
 
-//. Checking wheter a Instance is created using a new keyword or not
+//. Checking whether a Instance is created using a new keyword or not
 //> use !new.target in a if statement if true throw an error
 
 let CheckingNew  = function(){
@@ -70,3 +70,12 @@ let CheckingNew  = function(){
 
 let withNew = new CheckingNew()
 let noNew = CheckingNew()
+
+
+//. Checking whether the object is instance of the class
+//> use instanceof to check for class
+//> The instanceof operator tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value. 
+
+//> Syntax: object instanceof constructor
+
+console.log(myCar instanceof Car) //true

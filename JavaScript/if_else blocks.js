@@ -12,8 +12,7 @@ if(console.log("Im not a condition")){
 //> if: Executes the code block if the condition provided is truthy.
 //> else: Executes the code block if the condition provided is falsy.
 
-//> In JS, Truthy:  All values are truthy unless they are defined as falsy. That is, 
-//> all values are truthy except false, 0, -0, 0n, "", null, undefined, NaN, and document.all.
+//> In JS, Truthy:  All values are truthy unless they are defined as falsy. falsy values includes false, 0, -0, 0n, "", null, undefined, NaN, and document.all.
 //> Falsy: A false value.
 
 
@@ -41,8 +40,8 @@ if(a==1)
 else
 console.log("a!=1")
 
-//> We assumed the first if is associated to else
-//> But JS associated else to second if since it's close to it 
+//> We assumed the first_if is associated to else
+//> But JS associated else to second_if since it's close to it 
 //Tip: always use block statements(use {}), especially in code involving nested if statements.
 //> This is to avoid dangling else.
 
@@ -54,4 +53,4 @@ console.log("a!=1")
 //Tip:  write it with a space between else and if:
 
 
-//Tip: You can assign values in the 
+//x You can assign values in the if condition but its better to avoid
