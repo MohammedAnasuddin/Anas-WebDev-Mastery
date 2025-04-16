@@ -29,9 +29,9 @@ class user{
 }
 
 let u1 = new user("Anas")
-u1.location = "Hyderabad" //- this calls setter
-console.log(u1.location); //- this calls the getter
+u1.location = "Hyderabad" //- .property = value: calls setter (this value will be a parameter for setter)
+console.log(u1.location); //- .property: this calls the getter
 console.log(u1._location); //- this directly uses the value
 
-//- getter is called on read(obj.accessor_property) and setter is called when assigned(obj.accessor_property  = new_value)
+//- getter is called on read (obj.accessor_property) and setter is called when assigned (obj.accessor_property  = new_value)
 //x do not call getter and setter as functions
