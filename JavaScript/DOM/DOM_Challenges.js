@@ -75,7 +75,7 @@ document.getElementById("teaList").addEventListener("click",function(event){
     
     if(event.target && event.target.matches(".teaItem")){
         alert(event.target.textContent)
-        //- alert is only pop up for list items with class "teaItem" not fr un class list item (here Dummy Tea) even though it's the list.
+        //- alert is only pop up for list items with class "teaItem" not for class list item (here Dummy Tea) even though it's the list.
    }
    
 
