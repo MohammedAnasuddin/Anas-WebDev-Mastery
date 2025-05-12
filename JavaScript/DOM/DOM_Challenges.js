@@ -5,6 +5,7 @@
 //>c-1 
 
 //Tip: Grab the event listeners first
+console.log("Script Attached");
 
  document.getElementById("changeTextButton").addEventListener('click',function(){
   console.log(this);
@@ -77,7 +78,35 @@ document.getElementById("teaList").addEventListener("click",function(event){
         alert(event.target.textContent)
         //- alert is only pop up for list items with class "teaItem" not for class list item (here Dummy Tea) even though it's the list.
    }
-   
+})
 
 
+//> C-8: Form Handling
+   document.getElementById("feedbackForm").addEventListener('submit', function(event){
+    event.preventDefault();
+    //- .preventDefault(): if the event does not get explicitly handled, its default action should not be taken as it normally would be.
+    // alert("Submitted")
+    //Tip: Always stop the default behaviour of the form
+    
+    //>grabbing the input value
+    let feedback= document.getElementById("feedbackInput").value;
+    //.value to get the form input as value
+
+    document.getElementById("feedbackDisplay").textContent=`Feedback is: ${feedback}`;
+   })
+
+//> C-9: DOM Content Loading
+document.addEventListener("DOMContentLoaded",function(){
+    console.log("DOM Loaded Sucessfully");
+
+    document.getElementById("domStatus").textContent="DOM Completely Loaded";
+})
+
+
+//>C-10: CSS Manipulation
+document.getElementById("toggleHighlight").addEventListener("click",function(){
+    let description = document.getElementById("descriptionText");
+    description.classList.add("highlight"); //Style class in CSS
+    // description.classList.toggle("highlight"); //Style class in CSS
+    
 })
