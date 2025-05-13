@@ -14,7 +14,7 @@ console.log("Script Attached");
   paragraph.textContent=" I'm Changed by below button"
 
  })
- //x Event Listener Callback functions required the context hence => functions cant be used
+ //x Event Listener Callback functions required the context hence Arrow => functions cant be used
 // console.log(button)
 
 
