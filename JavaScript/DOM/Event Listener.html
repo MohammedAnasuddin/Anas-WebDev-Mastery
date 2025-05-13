@@ -36,24 +36,23 @@
         }
 
         box-bg{
-            background-color: blueviolet;
-            opacity: 25;
+            color: blueviolet;
         }
 
     </style>
 </head>
 <body>
-    <h3>Capturing</h3>
+    <h3 >Capturing</h3>
     <div class="capturing">
         <div id="cap" class="parent"> <h4>Parent</h4>
-            <div id="cap-c"class="child"> <h4>child</h4></div>
+            <div id="cap-c"class="child" tabindex="0"> <h4>child</h4></div>
         </div>
     </div>
     
     <h3>Bubbling</h3>
     <div class="bubbling">
-        <div id="bubble" class="parent"><h4>Parent</h4>
-            <div class="child"><h4>child</h4></div>
+        <div id="bubble-p" class="parent"><h4>Parent</h4>
+            <div id="bubble-c"class="child"><h4>child</h4></div>
         </div>
     </div>
     <script src="Event_Listener.js"></script>

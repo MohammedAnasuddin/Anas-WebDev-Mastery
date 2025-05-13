@@ -49,13 +49,34 @@ document.getElementById("cap").addEventListener("click",function() {
 //> set to -> true to use capturing     
 
 
-
-document.getElementById("cap").addEventListener("focus",function(){
-console.log("Capturing Demo");
-
+//.Capturing 
+document.getElementById("cap").addEventListener("click",function demo1(){
+// console.log("Capturing Demo");
+console.log("Parent Listener of Capturing");
+document.getElementById("cap").classList.add("box-bg")
 },true)
 
-document.getElementById("cap-c").addEventListener("focus",function(){
-console.log("Capturing Demo: Child");
+document.getElementById("cap-c").addEventListener("click",function demo2(){
+console.log("Child Listener of Capturing");
 
+document.getElementById("cap-c").classList.add("box-bg");
+},true)
+
+///> output : Capturing Parent Capturing Child
+
+
+//. Bubbbling
+document.getElementById("bubble-p").addEventListener("click",function demo1(){
+// console.log("Capturing Demo");
+console.log("Parent Listener of Bubbling");
+document.getElementById("cap").classList.add("box-bg")
 })
+
+document.getElementById("bubble-c").addEventListener("click",function demo2(){
+console.log("Child Listener of Capturing");
+
+document.getElementById("cap-c").classList.add("box-bg");
+})
+
+//- Here no boolean value is passed since bydefault its false -> bubbling
+//>Output:  
