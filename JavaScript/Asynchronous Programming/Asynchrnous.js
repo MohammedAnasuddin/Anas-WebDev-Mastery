@@ -1,11 +1,5 @@
-//. Asynchronous Programming 
-//>  technique that enables your program to start a potentially long-running task 
-//>  and still be able to be responsive to other events while that task runs
-//>  rather than having to wait until that task has finished.
-
-
-//. Synchrnous Programming
-//> program will be stuck waiting for the response and cannot do anything else until the response is returned.
+//. Synchronous Programming
+//>  program will be stuck waiting for the response and cannot do anything else until the response is returned.
 //-  This is known as blocking,
 //>  and it can lead to an application appearing unresponsive or "frozen" to the user.
 
@@ -23,6 +17,11 @@ document.getElementById("b2").addEventListener("click", function(){
     alert("You have clicked the 2nd button")
 })
 
+
+//. Asynchronous Programming 
+//>  technique that enables your program to start a potentially long-running task 
+//>  and still be able to be responsive to other events while that task runs
+//>  rather than having to wait until that task has finished.
 
 document.getElementById("b3").addEventListener("click", function(){
     setTimeout(() => {
