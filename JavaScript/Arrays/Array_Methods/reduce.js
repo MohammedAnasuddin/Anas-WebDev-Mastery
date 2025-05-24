@@ -1,6 +1,6 @@
 //. reduce()
-//> Returns a single value by calling reducer(callback FN) on every element of the array
-//> Syntax: (Callback_Function(accumulator, current,index,element), intialValue)
+//> Returns a single value by calling reducer_(callback FN) on every element of the array
+//> Syntax: (Callback_Function(accumulator, current,index,element), initialValue)
 
 //- accumulator is the collective value of all the previous elements and passed in callback Fn
 //Note: InitialValue is optional 
@@ -8,7 +8,7 @@
 //- If initialValue it will act as previous return value to the first call.
 //-x If not provided first element is used as initial value and iteration proceeds to next element 
 
-// Calculating sim of N natural Numbers
+// Calculating sum of N natural Numbers
 let num = [1,2,3,4,5]
 let sum = num.reduce((acc,e,i,arr)=>{
         console.log(i,e,acc)
