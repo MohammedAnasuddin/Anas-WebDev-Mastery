@@ -2,6 +2,7 @@
 //> def: object representing  the completion or failure of an event of an asynchronous operation
 //> The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error).
 //> used to handle async operations
+//Note: Promises cannot be cancelled once executed
 
 //> When either of these options occur, the associated handlers queued up by a promise's then method are called.
 //- passing callbacks are not a reliable way 
