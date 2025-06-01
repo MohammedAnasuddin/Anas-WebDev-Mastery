@@ -84,3 +84,9 @@ apply_array(null, [1,2,3,4,5]);
 (function noCall(){
     console.log("IIFE: I have executed at my definition itself")
 })()
+
+
+
+//. function vs method
+//> function: which can be called on its own
+//> method:  a function which is called on a object
