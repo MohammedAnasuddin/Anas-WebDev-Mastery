@@ -1,0 +1,177 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        button{
+            margin: 15px;
+            padding: 20px;
+        }
+        body{
+            font-family: monospace;
+        }
+    </style>
+    <title>window</title>
+</head>
+<body>
+    <h1>window object </h1>
+    <li>innerWidth and innerHeight</li>
+    <li>open() and close()</li>
+    <li>scroll</li>
+    <li>resize</li>
+
+    <h2 id="dimensions"> Width: Height:</h2>
+
+    <h2>Creating Windows: open() and close()</h2>
+    <button id="open-self">Open In this tab</button>
+    <button id="open-new">Open In new tab</button>
+    <button id="close">Close new tab</button>
+    <button id="open-pop">Open  as a pop</button>
+    <br>
+
+    <h2>Resizing Windows: resizeTo() and resizeBy()</h2>
+    <button id="resize-grow">Grow a window</button>
+    <button id="resize-shrink">Shrink a window</button>
+    <button id="resize-specific">New window of 300x300 </button>
+     
+        <br>
+
+    <h2>Scroll: resizeTo() and resizeBy()</h2>
+    <button id="scroll">Scroll a element</button>
+    <button id="scrollBy">scroll by 100px</button>
+    <button id="scrollTo">scroll to 100px </button>
+
+    <div style="height:700px; width: 300px; overflow: scroll;" id="overflow-div"><p id="lc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus quod officia ipsum quae, ea nulla accusantium amet, architecto laudantium ad quis praesentium, earum labore! Suscipit quaerat mollitia ratione minus. Consequatur necessitatibus accusantium repudiandae quod ipsa reiciendis suscipit beatae minima quidem omnis magnam rem aut, dolore nulla, quasi cupiditate sit voluptas praesentium impedit dolorem at maxime! Ratione nobis animi aliquid accusantium neque ad eaque voluptates rerum, maiores vitae enim ducimus reiciendis veritatis adipisci! Vero repellat iste saepe fugiat deleniti repellendus molestias porro iusto, dolor nihil reprehenderit accusamus minus nesciunt dolorem incidunt architecto quis sed? Dolores nesciunt sequi perferendis ex officia quaerat nobis, veniam ipsum ut alias placeat saepe ad iste cum magnam voluptatem vel illum odio tempore! Itaque saepe modi quaerat dolores natus ipsum id maiores tempore, corporis atque vel ratione blanditiis rerum enim optio maxime recusandae iure dignissimos officiis et. Sed vero ipsam non velit pariatur consectetur optio totam cum? Officiis quasi quisquam atque corrupti, cupiditate, dolores eius architecto culpa odio iure, quis necessitatibus eligendi! Minus incidunt vero aspernatur earum natus? Culpa similique nemo, optio officia, eos laborum, tempore doloribus cum sint modi nesciunt repudiandae vel eveniet unde voluptatibus commodi assumenda accusantium mollitia numquam rem nostrum soluta pariatur. Non beatae, animi quis quisquam nisi a cumque optio soluta. Numquam alias est sint omnis architecto necessitatibus laudantium? Nesciunt perspiciatis magnam quos inventore? Qui expedita fuga labore illum reiciendis accusamus eos laboriosam quasi tempora omnis vitae sit quibusdam ab eum nesciunt perferendis autem rerum unde reprehenderit, praesentium deleniti iste quod sed molestiae? Animi fugiat iste odio tenetur eaque laborum repellat hic a mollitia quae consequatur veritatis repudiandae iusto, ducimus alias soluta molestiae explicabo! Laborum, perspiciatis earum? Placeat sunt excepturi, velit ratione praesentium dolores, aliquam nisi culpa voluptatem obcaecati in cupiditate magnam doloremque est cumque a nulla, dolorem nesciunt expedita unde sed quaerat. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus quae sed architecto asperiores laboriosam, sit rerum cumque quod mollitia consequuntur odio, quos nulla fugit debitis, ratione nemo delectus libero odit repellendus id doloremque! Iste tenetur aliquid eos labore beatae laboriosam hic, laborum maxime ea ut modi, odio, repudiandae doloremque quia excepturi. Officiis pariatur incidunt dolorem repudiandae. Dolor, quae id? Quasi culpa amet ab iure at itaque in cum nulla mollitia eaque obcaecati tempora ratione, veritatis saepe! Autem dolores voluptates, harum accusamus fugit officia. Cum enim sequi qui, nulla provident voluptas commodi explicabo architecto mollitia? Officiis dignissimos harum asperiores saepe blanditiis? Maxime tempore perspiciatis nulla obcaecati magni saepe veniam nisi quis sed ducimus, rerum minus repellendus vero commodi hic ex. Non cum nisi ipsa a sit ab nobis quaerat, culpa laboriosam earum perspiciatis dicta quis, minus, nulla nemo odit facilis iure quasi corrupti explicabo nostrum ex delectus? Eaque dolores id architecto illum, voluptas sapiente nostrum deserunt rerum et quam quibusdam obcaecati itaque provident neque reiciendis perferendis, consectetur maiores culpa magnam. Libero magnam quia quidem deleniti explicabo quam adipisci earum rem iure facere illum debitis nostrum in laboriosam, quae a aut ipsam modi est? Iusto, consequuntur aut? Quia iure illo aspernatur ut labore ratione. Omnis eum eos, quidem nisi iure, enim tempora libero sed nam ipsam dolores dolore aliquid fugit, voluptate animi in id possimus cupiditate cumque. Illum nisi quaerat mollitia tenetur harum hic, optio aliquam explicabo similique itaque! Eveniet ea excepturi a tempora placeat? Ad, eum suscipit earum sunt illum laborum? Sint rem ab labore, unde, obcaecati aspernatur laborum in iure voluptate sunt deserunt repellat iusto ad quidem possimus ipsam minus reprehenderit adipisci quaerat aliquam corporis facere. Ea voluptatem fuga quas nesciunt! Veniam est omnis non officia, libero deleniti fugiat autem ipsum fugit cumque error molestias eligendi quod culpa. Beatae, facilis!</p></div>
+
+
+    <script>
+        console.log("Lets start learning window object")
+        
+        //> window, represents the window in which the script is running
+        //> window represents whole browser where as document represent the web page
+        //> In fact , document is the property of the window 
+        
+        //.Getting the current window 
+        // > use document.defaultView
+        const our_window = document.defaultView;
+        console.log(our_window) 
+
+        //. Properties
+            //. 1.innerWidth
+                 //> returns the width of the viewport of the window
+                 //> returns width in pixels as Number
+                 //Note:  this includes the width of the scroll bar as well
+                 //x this property is just readonly
+                 
+            //. 2. innerHeight()
+                 //> same as innerWidth() but for height 
+                    
+                window.addEventListener('resize',()=>{
+                    console.log("Width:",window.innerWidth,"px", "Height:",window.innerHeight,"px")
+                    let heading = document.getElementById("dimensions")
+                    heading.textContent = `Width: ${window.innerWidth}px Height:${window.innerHeight}px `
+
+                })
+
+            //. 3. open and close
+                //> window.open():  loads a specified resource into a new or existing browsing context(tab,window,iframe)
+                //> Syntax: open(resource_url, target, windowFeatures)
+                        ///> resource_url: path to resource to be loaded if empty a blank page is opened
+                        //> target: name(no whitespaces) of the browsing context in which resource has to be loaded
+                        //>            "_self": Inside current browser context(tab)
+                        //>             not specified:  new browser tab(default)
+                        //> window features: string containing a comma-separated list of window features in the form name=value
+                                            //> popup: opens as popup
+                                            //> width: minimum 100px
+                                            //> height: minimum 100px
+                                            //> left: offset from the default position
+                                            //> top: offside from the top 
+                            let pop_up = null;
+                             window.document.getElementById("open-self").addEventListener('click',()=>{
+                            window.open("https://developer.mozilla.org/en-US/docs/Web/API/Window/open","_self",'popup');
+                        })
+                             window.document.getElementById("open-new").addEventListener('click',()=>{
+                            pop_up= open("https://developer.mozilla.org/en-US/docs/Web/API/Window/open");
+                        })
+                             window.document.getElementById("open-pop").addEventListener('click',()=>{
+                             open("https://developer.mozilla.org/en-US/docs/Web/API/Window/open","myWindow","popup,width=200,height=400,top=50,left=50");
+
+                        })
+                         
+                    //> .close(): only works on value storing window.open() 
+                        window.document.getElementById("close").addEventListener('click',()=>{
+                            pop_up.close()
+                        })
+            
+            //. 4 Resize
+                //. 1. resize(x,y)
+                        //> x and y are pixels + used to grow the window and - used to shrink window
+                        document.getElementById("resize-shrink").addEventListener('click',()=>{
+                            //Note: Cannot change the default tab size use it new windows 
+                            let new_window = window.open("","demo","popup")
+                            console.log("new popup will shrink");
+                            
+                            setTimeout(()=>{
+                                new_window.resizeBy(-300,-300)
+                            },2000)
+
+                          
+                            
+                            
+                        })
+
+
+                        document.getElementById("resize-grow").addEventListener('click',()=>{
+                            let grow_window = window.open("","","width=300,height=300")
+                            console.log("new popup will grow");
+                            setTimeout(()=>{
+                                grow_window.resizeBy(+300,+300);
+                            },2000)
+
+                           
+                        })
+
+                //. 2. resizeTo(final_width,final_height): 
+                            //> resizes the window to the specified dimensions
+                            //> these are dimensions of tab not just web page(scrollbar also included.
+                            
+                        document.getElementById("resize-specific").addEventListener('click',()=>{
+                            let specific_window = window.open("","","width=300,height=300")
+                            console.log("new popup of 300x300 created");
+                            specific_window.resizeTo(300,300);
+
+                        })
+            //. 5 Scroll
+                //1. scroll(x,y) or scroll({options}): 
+                    //> scrolls the element to a particular set of coordinates inside a given element.
+                    document.getElementById("scroll").addEventListener('click',()=>{
+                        let content = document.getElementById("overflow-div");
+                        content.scroll({top: 300,behavior: "smooth"})
+                    })
+                        /*
+                        Options is a object = {
+                        top: Number->movement on Y-axis
+                        left: NUmber-> movement on X-axis
+                        behavior: "smooth"/"instant" -> nature of scroll 
+                        }
+    
+                        */
+
+                //. 2. scrollBy({options}):  
+                    //> scrolls the element by mentioned distance from the current position.
+                    document.getElementById("scrollBy").addEventListener('click',()=>{
+                        let content = document.getElementById("overflow-div");
+                        content.scrollBy({top: 300,behavior: "smooth"})
+                    })
+
+                //. 2. scrollBy({options}): 
+                    //> scrolls the element to a particular set of coordinates relativelu.
+                    document.getElementById("scrollTo").addEventListener('click',()=>{
+                        let content = document.getElementById("overflow-div");
+                        content.scroll({top: 300,behavior: "smooth"})
+                    })
+
+    </script>
+</body>
+</html>
