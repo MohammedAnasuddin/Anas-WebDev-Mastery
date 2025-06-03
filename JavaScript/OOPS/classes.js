@@ -26,6 +26,8 @@ class new_class_2{
 //. static elements
 //> static properties (fields and methods) are defined 
 //> on the class itself instead of each instance.
+//> static elements should be accessed using classnmae since they belong to class not object 
+//> classname.static_element;
 
 //- a element static by prefixing "static" keyword 
 
