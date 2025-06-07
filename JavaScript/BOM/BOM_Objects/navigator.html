@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator</title>
+    <style>
+        body{
+            padding: 20px;
+            margin: 10px;
+            font-family: monospace;
+        }
+        p{
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <h1>navigator object</h1>
+    <ul>
+        <li><h3>navigator.userAgent</h3></li>
+        <li><h3>navigator.language</h3></li>
+        <li><h3>navigator.onLine: <h3 id="status"></h3></li>
+        <li><h3>navigator.geolocation</h3></li>
+        <li><h3>navigator.clipboard</h3></li>
+</ul>
+
+<h4>Clipboard Methods</h4>
+<p id="content"></p> 
+<button id="copy-button">Copy</button>
+<input>
+<p id="paste"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/ua-parser-js@1.0.35/src/ua-parser.min.js"></script>
+<!-- 
+- Always use type attribute if the js file has imports  -->
+<script type="module">
+    //. navigator
+            //> represents the state and identity of user agent
+            let navigator = window.navigator;
+            console.log("navigator Object: ",navigator)
+            
+            //. 1. userAgent: returns read only  info about the user Agent
+                    //> userAgent: string about meta data about the browser and device
+                    console.log("Current browser and device: ",navigator.userAgent)
+                    //Note: MDN, says not to use it anymore
+
+                    //> to detect browser and os and device use the following:
+                        // node module: UA Parser or CDN Script
+                        const parser = new UAParser();
+                        const about_user = parser.getResult();
+                        console.log("Browser: ",about_user.browser.name);
+                        console.log("OS: ",about_user.os.name)
+                        console.log("OS-Version: ",about_user.os.version)
+                        console.log("Architecture: ",about_user.cpu.architecture)
+            
+                 //. 2. navigator.onLine:  A Boolean which represents whether device is connected to a network or not.
+                        //> Only reperesnets a network not the Internet Conection , 
+                        //> If the device connceted to a network witn no internet still returns true;
+                        console.log("Connection status: ",navigator.onLine)
+                        
+                        //. Checking Connection using Event Listener
+                        //> Event listener directly provides offline and online events for window
+                        //Note: These events only fire when the browser detects a transition between online and offline, not on initial load.
+
+                        window.addEventListener('online',()=>{
+                            document.getElementById("status").textContent = 'ONLINE'
+                        })
+
+                        
+                        window.addEventListener('offline',()=>{
+                            document.getElementById("status").textContent = 'OFFLINE'
+                        })
+                //. 3. GeoLocation: Returns a the geoLocation Object.
+                        console.log("Location: ",navigator.geolocation)
+                
+                // 4. clipboard: Returns a clipboard object
+                        console.log("Clipboard: ",navigator.clipboard);
+
+                        //Methods: 
+                                //. 1 read(): reads the content fromclipboard and returns a promise
+                                document.addEventListener('DOMContentLoaded',()=>{
+                                    document.getElementById('content').textContent = "<script src='navigator.js'>"
+                                })
+
+                                document.getElementById("copy-button").addEventListener('click',async ()=>{
+                                    let clipboard = navigator.clipboard
+                                    const content = document.getElementById("content").textContent;
+                                    await clipboard.read("Hello Bro")
+                                    alert("You have copied: ",content)
+                                    //> Error: ClipboardUnsanitizedFormats 
+                                })
+                    
+
+    </script>
+</body>
+</html>
