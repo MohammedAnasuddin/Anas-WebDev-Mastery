@@ -1,4 +1,5 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom/client'
 //> Now the eleemnt needs to be used in the DOM hence we use ReactDOM
 
 const heading = React.createElement("h1",{},"Hello World from React")
