@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Creating our own Production Ready React App",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Mohammed Anasuddin",
   "license": "ISC",
