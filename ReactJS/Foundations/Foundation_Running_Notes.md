@@ -45,7 +45,7 @@ JSX replaces Complexity  of creating an element using  `React.createElement()` b
 >
 > Both JSX and `React.createElement()` returns the same object.
 
- JS Engines does not understand JSX , its transpired in browser compatibles form by babel
+ JS Engines does not understand JSX , its transpiled in browser compatibles form by babel
 
 #### babel
 

@@ -28,6 +28,7 @@ Example Element:
  */
 
 //> Third Parametr of .createElement() is reponsible for innerHTML for the element
+//x Dont use = for attributes object use :
 let nested_elements = React.createElement('div',{id:"parent"}, 
     React.createElement("div",{id:"child"}, 
      //- innerHTML parameter is an array which enables us to add multiple elements at the same level
