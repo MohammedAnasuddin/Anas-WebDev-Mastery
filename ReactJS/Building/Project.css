@@ -32,10 +32,22 @@
 .rest-card{
   /* border: 1px solid darkgray; */
   border-radius: 20px;
-  height: 20vh;
-  width: 200px;
-  padding: 16px;
+  height: 75vh;
+  width: 260px;
   margin: 8px;
   background-color: white;
-  box-shadow: 2px 2px 20 darkslategray;
+  box-shadow: 2px 2px 5 darkslategray;
+  
+  
+}
+
+.rest-card>.description{
+   padding: 16px;
+   line-height: 12px;
+}
+
+.rest-card:hover{
+cursor: pointer;
+box-shadow: 2px 2px 10 darkslategray;
+/* border: 1px solid darkgrey; */
 }
