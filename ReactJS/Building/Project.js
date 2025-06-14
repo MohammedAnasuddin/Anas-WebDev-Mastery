@@ -47,16 +47,16 @@ const Header = ()=>(
 
 const RestaurantCard = (props)=>{
 
- const {resData} = props;
+ const {name, area, cuisines, avgRating, slugs} = props.data;
 
   return ( <div className="rest-card">
-     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resData.data.cloudinaryImageId}`} style={{width: "100%",height:"50%", borderRadius:"15px 15px 0px 0px"}}/>
+     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} style={{width: "100%",height:"50%", borderRadius:"15px 15px 0px 0px"}}/>
      <div className="description">
-      <h3 style={{lineHeight:"20px"}}>{resData.data.name}</h3>
-      <h4 style={{fontWeight:'lighter', color:'GrayText'}}>{`${resData.data.area}, ${resData.data.slugs.city}`}</h4>
+      <h3 style={{lineHeight:"20px"}}>{name}</h3>
+      <h4 style={{fontWeight:'lighter', color:'GrayText'}}>{`${area}, ${slugs.city}`}</h4>
       
-      <p style={{fontWeight: "bold", lineHeight:"20px"}}>Cuisine: <span style={{color:"darkslategray", fontWeight:"bolder",}}> {resData.data.cuisines.join(", ")}</span> </p>
-      <p style={{fontWeight: "bold"}}>Rating: <span style={{color:"goldenrod", fontWeight:"bolder"}} >{resData.data.avgRating}</span> </p>
+      <p style={{fontWeight: "bold", lineHeight:"20px"}}>Cuisine: <span style={{color:"darkslategray", fontWeight:"bolder",}}> {cuisines.join(", ")}</span> </p>
+      <p style={{fontWeight: "bold"}}>Rating: <span style={{color:"goldenrod", fontWeight:"bolder"}} >{avgRating}</span> </p>
      </div>
   </div>)
 }
@@ -65,8 +65,9 @@ const rest_container_styles = {
   height: "70vh",
   margin: "5px",
   display: "flex",
-  flexDirection: "row",
   flexWrap:"wrap",
+  justifyContent:"center",
+  alignItems:"center",
   padding: "16px",
   border: "2px solid grey",
   borderRadius: "10px",
@@ -2130,22 +2131,26 @@ const Body=()=>(
       </div>
 
       <div className="rest-container" style={rest_container_styles}>
-        {/* Repeating Components should be coded once for modularity */}
+        {/*
+        //Tip: Repeating Components should be coded once for modularity */}
         {/* Add Cards here */}
           {/* 
-          > IN JSX, Inline styles are adding as JS object , where key-value are property:value of the CSS
-          > Then the object is given to style attribute using { } (since need to evalaute the object to get the CSS properties)  */}
+          // > IN JSX, Inline styles are adding as JS object , where key-value are property:value of the CSS
+          // > Then the object is given to style attribute using { } (since need to evalaute the object to get the CSS properties)  */}
         {/* <RestaurantCard props={restaurants}/> */}
         {/* <RestaurantCard resData={restaurant_List[0]}/>
         <RestaurantCard resData={restaurant_List[1]}/>
         <RestaurantCard resData={restaurant_List[2]}/>
         <RestaurantCard resData={restaurant_List[3]}/>
         <RestaurantCard resData={restaurant_List[4]}/> */}
-        {/* props are always creates a new object they are passed as props_obj = { props: Data} */}
+        {/* 
+        //> props are always creates a new object they are passed as props_obj = { props: Data} */}
       
-        {/* Using iteration */}
+        {/*
+        //. Using iteration 
+       */}
         {
-          restaurant_List.map(element => <RestaurantCard resData={element}/>)
+          restaurant_List.map(element => <RestaurantCard key={element.data.id} resData={element}/>)
         }
 
   

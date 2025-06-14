@@ -36,14 +36,12 @@
   width: 260px;
   margin: 8px;
   background-color: white;
-  box-shadow: 2px 2px 5 darkslategray;
-  
-  
+  box-shadow: 2px 2px 5 darkslategray
 }
 
 .rest-card>.description{
    padding: 16px;
-   line-height: 12px;
+   line-height: 8px;
 }
 
 .rest-card:hover{

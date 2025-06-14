@@ -220,3 +220,26 @@ Compoent = (prop_identifier)=>{
 > [!IMPORTANT]
 >
 > Hence React gets the markup and logics together at single file via JSX
+
+
+
+While dynamically rendering components are rendered React suggest to provide unique key to  each component element being created.
+
+```jsx
+{
+array_list.map(element => <Component key={unique_key}                     prop_idetifier = {element})/>
+}
+```
+
+here `key` is the reserved word.
+
+This is to optimize the rendering,  If a new item is added since React knows the id's of the existing components it will just add the new component rather then re-rendering all the existing component's of the same level/container.
+
+> [!IMPORTANT]
+>
+> Always use `key` when `.map()` is used.
+
+> [!CAUTION]
+>
+> Never use `index` as key
+
