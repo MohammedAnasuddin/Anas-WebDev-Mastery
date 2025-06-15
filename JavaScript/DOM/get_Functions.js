@@ -14,5 +14,5 @@
 //.getElementsByTagName(tag_name)
 //> returns the elements of specified type
 //- tag refers to HTML tag name
-//> returns a real-timr array which upadates as per DOM changes
+//> returns a real-time array which updates as per DOM changes
 

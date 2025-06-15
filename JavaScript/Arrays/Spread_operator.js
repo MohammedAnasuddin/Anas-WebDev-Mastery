@@ -1,6 +1,7 @@
 //. Spread Operator ....
-//> Used to distribute the elements of a iterable object
-//> into individual values.
+//> Used to distribute the elements of a iterable object into individual values.
+//Note: Many objects are not iterable, including all plain objects that lack a Symbol.iterator method
+//> 
 
 let num = [1,2]
 //> Add the missing numbers upto 6.
@@ -29,7 +30,7 @@ console.log(method_2)
 //. Creating Shallow Copies
 let original = [1,2,3]
 let copy = original //> Share he same memory reference
-copy.push(4) //- This add tin the source array as well 
+copy.push(4) //- This adds in the source array as well 
 console.log(original)  // [ 1, 2, 3, 4 ]  
 
 let copy_2 = [...original] //x Does not share the same memory
