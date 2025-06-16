@@ -6,7 +6,7 @@ let obj = {
  key: 123
 }
 
-//> Suppose user has a public key and its object has teh private key
+//> Suppose user has a public key and its object has the private key
 function printID(obj,public_key){
     console.log("Public Key: ",public_key,"Private key from the Obj: ",this.key)
 }
