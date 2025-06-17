@@ -1,6 +1,6 @@
 //. JSON.parse(valid_json_string,reviver)
 ///> parses a JSON string, constructing the JavaScript value or object described by the string
-//- Parsing is the process of analyzing and converting data or text into a structured and usable format
+//- Parsing is the process of converting ordinary_text into meaningful symbols(components) by following a grammar(rules)
 
 //> Returns a JS obj 
 
@@ -31,8 +31,10 @@ console.log(arr,typeof arr) //Anas string
 //. Reviver Function
 //> callback allows to transform(modifies) parsed values from JSOn_string before returning.
 //> it loops over every key:value pair in the JSON_String.
+
 //> Syntax: JSON.parse(json_string, (key,value) => {    })
-//> named reviver since it get revives data to modify it.
+
+//> named reviver since it converts string properties into usable object properties.
 
 
     let user_string =  `{
