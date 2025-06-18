@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "notes": "parcel Notes\\notes.html"
   },
   "author": "Mohammed Anasuddin",
   "license": "ISC",
