@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom/client'
 //> Syntax: <Component prop_1 = { value_1} prop_2: {value_2} />
 //Note: ReactDOM makes a collection of all the props into a single Object because
 //Note:  React component functions only accepts a single argument, a props object
-
+//Note: Only custom attributes are considered in the above object.
 
 //. Reading props in a function
 //> Syntax : function Component( {prop_1, prop_2:alias , .... , prop_N} ){ }
