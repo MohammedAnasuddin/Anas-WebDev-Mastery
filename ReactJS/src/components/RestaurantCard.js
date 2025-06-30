@@ -1,7 +1,7 @@
 import { CARD_IMG_BASE_URL as IMG_URL } from "../utils/constants";
 
 const RestaurantCard = (props)=>{
-console.table(props)
+// console.table(props)
 const data = props.resData.data;
  const {name, area, cuisines, avgRating, slugs, cloudinaryImageId} = data
 

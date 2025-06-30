@@ -18,8 +18,6 @@ All of these services run on their specific ports. All of these ports can be dep
 
 These services interact by calling to the port of the required service using a url
 
-
-
 # Interaction Using ReactJS
 
 ## Making API Calls:
@@ -40,10 +38,6 @@ Most-Used Approach Since in `Approach-1` For a Moment There would be nothing , b
 > 
 > React 's Re-Render Cycles are pretty fast this won't be a problem 
 
-
-
-## 
-
 ## useEffect() Hook
 
 **purpose:** 
@@ -55,8 +49,6 @@ useEffect(callback_Arrow,[Dependency_Array])
 
 This callback function is called after the `component` renders. 
 
-
-
 ### Getting the Data
 
 We use `fetch` to get the response from the API 
@@ -64,8 +56,6 @@ We use `fetch` to get the response from the API
 `fetch` is provided by  `Browser / JS Engine`
 
 `fetch` returns a `Promise` Hence, call it using `async-await`
-
-
 
 #### CORS Policy
 
@@ -78,18 +68,16 @@ As soon as we get Data we call `setState_Varaible` which sets the new data
 which can be used to map and render all the components.
 
 > [!TIP]
->
+> 
 > Always use Optional Chaining( **?.** )  to handle JSON_Data
 
 So make the initial value of state_variable as `[]` to load nothing until data arrives. 
 
-
-
-### Using a Spinner until Data is Received: 
+### Using a Spinner until Data is Received:
 
 The Empty UI during the call leads to Bad UX.
 
-#### Conditional Rendering: 
+#### Conditional Rendering:
 
 ```jsx
 // Using if:
@@ -109,14 +97,42 @@ When the data is received `setState_variable` will be called and above `if-condi
 When exactly the  `useEffect()` is called? If After Return is encountered how is the
 `useEffect` inside the function is executed it has lost the control?
 
- 
-
-
-
 > [!IMPORTANT]
->
+> 
 >  Spinners does not leads to a good UX hence always use Shimmers
 
 ### Using Shimmers
 
-**Shimmer-ui: ** Reassembles the page's actual ui (fake-ui  of original U I)
+**Shimmer-ui: ** Reassembles the page's actual ui (fake-ui  of original UI) 
+
+### Implementing Search Feature
+
+> [!TIP]
+> 
+> While Learning Anything New Ask 3 Questions: Why , When and How
+
+We need a state vaiable to handle searchInput
+
+When we do the below:
+
+```jsx
+const [searchText. setSearchText] = useState("")
+
+return(
+<input value={searchText} />
+)
+```
+
+This will not allow not input anything since `input_tag` is always bonded to `searchText`  whose default value is `""`
+
+To solve this we need to use `onChange` with the help of `e: event parameter` we call the `setSearchText` to update the input's value.
+
+> [!TIP]
+> 
+> To check how many times a component has rendered just put a log on top level inside the component's function
+
+So for every character input the `Body` component is re-rendered (function is called) 
+
+
+
+> "" The People who codes faster takes lots of time to Debug and who codes slower takes less time to debug ""

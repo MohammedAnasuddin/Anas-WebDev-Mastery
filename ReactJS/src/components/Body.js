@@ -18,7 +18,7 @@ const rest_container_styles = {
 //Tip: For example, border-radius turns into borderRadius
 //Tip: Also place the values in String
 
-let button_style = {margin:"4px", height:"40px", backgroundColor:"steelblue", color:"whitesmoke", fontWeight:"bolder", border:"0px solid steelblue"};
+let button_style = {margin:"4px", height:"30px", backgroundColor:"steelblue", color:"whitesmoke", fontWeight:"bolder", border:"0px solid steelblue"};
 
 
 //> Logic for filtering: 
@@ -544,10 +544,12 @@ let filtered_list_restaurants_js = [
 
 const Body=()=> {
 const [filtered_list_restaurants, setFilteredListRestaurants] = useState([])
-
+const [searchResults, setSearchResults] = useState(filtered_list_restaurants);
+const [searchText, setSearchText] = useState("");
 useEffect(()=>{
   setTimeout(() => {
     setFilteredListRestaurants(restaurant_List);
+    setSearchResults(restaurant_List);
   }, 1000);
 }, [])
 
@@ -559,7 +561,22 @@ if(filtered_list_restaurants.length==0){
 return (
   <div className="body">
       <div className="search-box">
-          
+          <input type="text" className="search-input" style={{height: "25px", margin:"4px"}} value={searchText} onChange={(e)=>{
+            setSearchText(e.target.value)
+          }}/>
+          <button className="search_button" style={button_style} onClick={
+            ()=>{
+              //> Create a state variable to handle user Input 
+              console.log("Searched for: ",searchText)
+              const resultsFound= filtered_list_restaurants.filter((e)=> e.data.name.toLowerCase().includes(searchText.toLowerCase()))
+              if(resultsFound.length==0){
+                alert("N/A")
+              }
+              else{
+                  setSearchResults(resultsFound)             
+              }
+            }
+          }>Search For It</button>
       </div>
       <div className="filter">
         <button className="filter-bth" style={button_style} onClick={()=>{ 
@@ -569,13 +586,13 @@ return (
             return restaurant.data.avgRating>=4
           })
           console.log(filtered_data)
-         setFilteredListRestaurants(filtered_data) 
+         setSearchResults(filtered_data) 
           }}> 
         Top Rated Restaurants 
         </button>
 
           <button className="undo" style={button_style} onClick={()=>{
-            setFilteredListRestaurants(restaurant_List);
+            setSearchResults(restaurant_List);
           }}>Get All</button>
       </div>
 
@@ -599,7 +616,7 @@ return (
         //. Using iteration 
        */}
         {
-          filtered_list_restaurants.map(element => <RestaurantCard key={element.data.id} resData={element}/>)
+          searchResults.map(element => <RestaurantCard key={element.data.id} resData={element}/>)
         }
 
   
