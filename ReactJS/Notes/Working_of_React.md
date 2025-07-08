@@ -1,6 +1,6 @@
 - [x] React BTS
 
-- [ ] States
+- [x] States
 
 - [ ] Hooks
 
@@ -54,6 +54,69 @@ A **React Component** is a **function or class** that defines what React Element
 These are the `React Elements Object` whose `type` value is a `function` or a `class`.
 
 In React, components describe any **composable behavior** (ability of an system to rebuild itself using reusable components), and this includes rendering, lifecycle, and state.
+
+###### Logics of A Components:
+
+Two types of logic inside React components:
+
+1. **Rendering code** :
+   
+   1. lives at the top level of your component. This is where you take the props and state, transform them, and return the JSX you want to see on the screen.
+   
+   2. Rendering code must be pure. Like a math formula, it should only *calculate* the result, but not do anything else.
+
+2. **Event handlers**: 
+   
+   1. nested functions inside your components that *do* things rather than just calculate them.
+   
+   2. Event handlers contain **“side effects**”( operation or action within a component that interacts with the "outside world")  they change the program’s state) caused by a specific user action (for example, a button click or typing).
+   
+   ```jsx
+   function Example() =>{
+      // Event handlers
+      function updateCount(){
+   
+   }
+      // Redering Code
+       return (
+   
+        )
+   }
+   ```
+
+##### **Components must be Pure:**
+
+React’s rendering process must always be pure. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure.
+
+This means that **calling this component multiple times will produce different JSX!** And what’s more, if *other* components read `guest`, they will produce different JSX, too, depending on when they were rendered! That’s not predictable.
+
+In React, rendering should be a pure calculation of JSX and **should not contain side effects like modifying the DOM.**
+
+```jsx
+let guest = 0;
+
+function Cup() {
+  // Bad: changing a preexisting variable!
+  guest = guest + 1;
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup />
+      <Cup />
+      <Cup />
+    </>
+  );
+}
+```
+
+Notice how the original example displayed “Guest #2”, “Guest #4”, and “Guest #6” instead of “Guest #1”, “Guest #2”, and “Guest #3”. The original function was impure, so calling it twice broke it. But the fixed pure version works even if the function is called twice every time. **Pure functions only calculate, so calling them twice won’t change anything**—just like calling `double(2)` twice doesn’t change what’s returned, and solving y = 2x twice doesn’t change what y is. Same inputs, same outputs. Always.
+
+The problem was that the component changed a *preexisting* variable while rendering. This is often called a **“mutation”** to make it sound a bit scarier. Pure functions don’t mutate variables outside of the function’s scope or objects that were created before the call—that makes them impure!
+
+However, **it’s completely fine to change variables and objects that you’ve *just* created while rendering.**
 
 ###### Class Components v/s Functional Components:
 
@@ -111,6 +174,8 @@ On Successful `reconiliation` , `React` will have Resulting DOM-tree which shall
 
     `React` provides greater optimization by working with immutability.
 
+> In React, rendering should be a pure calculation of JSX and should not contain side effects(External Events) like modifying the DOM.
+
 ## Decoding  Reconciliation
 
 `render()` function as creating a tree of React elements. On the next state or props update, that `render()` function will return a different `tree` of React elements.
@@ -131,12 +196,10 @@ React employs **two principles/rules** which minimizes the complexity of the alg
 
 1. Two elements of different types will produce different trees.
 
-   
-
 2. The developer can hint at which child elements may be stable(unchanged) across different renders with a `key` prop.       
 
 3. `React`: Handles the Defining New Components and Performing Diffing Algorithm.
-
+   
    `React-DOM`: Responsible for Starting the Reconciliation Process and Creating and inserting tree. Hence `React-DOM` called **Renderers**
 
 #### Working of React's Diffing Algorithm:
@@ -144,34 +207,32 @@ React employs **two principles/rules** which minimizes the complexity of the alg
 1. React Compares the root elements (Object) , by comparing their `type` field.
 
 2. If the `type`is <mark> not same</mark> React will tear-down the `old-tree` and constructs a `new tree` **form scratch.** 
-
+   
    > Here `tree` refers to `virtual_DOM`
-
+   
    1.  While tearing-down a `tree` the `old-nodes` are destroyed( removed from the DOM/UI) with their associated `states`.  This process is known as **Unmounting**  
-
+   
    2. Note: The Components below the old-nodes will also  be destroyed.
 
 3. If the `type` is same React compares at the attributes and update them without changing the underlying node.
-
+   
    > [!NOTE]
-   >
+   > 
    > 1. If the element’s **type is the same**, React **doesn’t replace the whole DOM node**, it **updates only what changed** in the element.  
-   >
-
+   
    ```js
    <div className="before" title="stuff" />
    
    <div className="after" title="stuff" />
    ```
-
+   
    Also , the attribute values are also compared and updates the changed value Eg: `style` attribute
-
+   
    ```js
    <div style={{color: 'red', fontWeight: 'bold'}} />
    
    <div style={{color: 'green', fontWeight: 'bold'}} />
    ```
-
 
         After handling current node then React Recursively compares children  components.
 
@@ -190,15 +251,11 @@ React employs **two principles/rules** which minimizes the complexity of the alg
    </Parent>
    ```
    
-   
-   
    The React Traverse like `Parent -> Child-1 -> SubChild-1 -> Child-2`
    
    this type of traversal known as depth-first traversal.
    
    `DFS` allows React to create **work on small subtrees independently**, finish them fully, then move to the next sibling.
-   
-   
 
 5. **Comparing Children's:**
    
@@ -220,7 +277,7 @@ React employs **two principles/rules** which minimizes the complexity of the alg
         <li>Villanova</li>
       </ul>
       ```
-
+      
               3.  React will mutate every child instead of realizing it can keep the `<li>Duke</li>` and `<li>Villanova</li>` subtrees intact. This inefficiency can be a problem.
 
 To avoid these problem use **KEYS**:
@@ -254,6 +311,21 @@ keeping remaining intact.
 - <mark> The key only has to be unique among its siblings, not globally unique.</mark>
   
    Don't use indexes as Keys they cause confusion during  comparison 
+  
+  If you are mapping components key should be fpr uppermost element not children
+  
+  ```jsx
+  //WRONG
+  <div>
+      <Card key="1"/>
+  </div>
+  
+  
+  // CORRECT
+  <div key="1">
+      <Card/>
+  </div>
+  ```
 
 For example:  if two siblings  components of same type and use indexes as keys
 
@@ -319,10 +391,8 @@ function decrypt(encData, key) {
 
 ✔️ Modern browsers, APIs, and Node.js backend recommend this.
 
-
-
 6. For Every Reconciliation process, React Generates a `virtual-DOM` and compares it to the `previous virtual-DOM` and commits the changes/updates to the `Real-DOM`
-
+   
    ![Working of React](./Working of React.jpeg)
 
 # Debugging in React:

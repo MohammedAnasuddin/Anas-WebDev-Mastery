@@ -133,6 +133,10 @@ To solve this we need to use `onChange` with the help of `e: event parameter` we
 
 So for every character input the `Body` component is re-rendered (function is called) 
 
-
-
 > "" The People who codes faster takes lots of time to Debug and who codes slower takes less time to debug ""
+
+
+
+
+
+# 

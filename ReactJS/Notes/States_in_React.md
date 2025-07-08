@@ -51,6 +51,8 @@ Always use `setState_Variable_Name` as the name for `setter_function`
 
 Whenever the state variables updates , react triggers a reconciliation Cycle(re-renders the component) .
 
+Don't create states inside if-else or Loops
+
 ### Understanding it's Components:
 
 #### initialState:
@@ -139,8 +141,6 @@ setState(s=>s+value): add value to the Current state.
 
 - Calling the `set` function *during rendering* is only allowed from within the currently rendering component. React will discard its output and immediately attempt to render it again with the new state. 
 
-
-
 #### Objects and Arrays as States:
 
 In React, `state is considered read-only`, so **you should *replace* it rather than *mutate* your existing objects**.
@@ -167,9 +167,7 @@ You can **reset a component’s state by passing a different `key` to a componen
 // Throwing "Too many Re-Renders Error"
 ```
 
-# Hooks
-
-Functions starting with `use` are referred as `Hooks`.
+# `useState()` Hook
 
 > These Hooks can only be called from Top-level (similar to `import`), they can't be called from inside conditions, loops, or other nested functions.
 

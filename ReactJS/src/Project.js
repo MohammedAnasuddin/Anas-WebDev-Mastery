@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import {Body}  from './components/Body';
+import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router';
+import Route_Error from "./components/Route_Error";
+import RestaurantMenu from './components/RestaurantMenu';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 /* 
@@ -44,9 +47,44 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const AppLayout = ()=>(
     <div id="app"> 
     <Header/>
-    <Body/>
+    <Outlet/>
     </div>
 )
 
 
-root.render(<AppLayout/>);
+const appRouter = createBrowserRouter([
+
+  {
+    path: "/",
+    element:<AppLayout/>,
+    errorElement: <Route_Error/>,
+    children: [
+
+    {
+        path:"/",
+        element:<Body/>
+    },
+    {
+        path:"/about",
+        element:(
+              <div>
+              <h2>Myself Anasuddin</h2>
+              <h3>Reach me at connect.fsdfgdfbdfb@gmail.com</h3>
+              </div>
+        )
+    },
+    {
+      path:"/restaurant/:resId",
+      element:<RestaurantMenu/>
+    }
+
+
+    ]
+  }
+  
+
+])
+
+
+root.render(<RouterProvider router={appRouter} />);
+

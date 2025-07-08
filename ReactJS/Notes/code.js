@@ -1,26 +1,27 @@
 import ReactDOM from 'react-dom/client'
 import React from 'react'
-import {useState} from 'react'
-function NameDisplay({ user_name }) {
-  return <h4>The Name : {user_name}</h4>;
-}
+import {useState, useEffect} from 'react'
+
 
 const Body=()=>{
-  const [user_name, setUserName] = useState("john")
-  const [version, setVersion] = useState(0)
+const [headings , setHeadings] = useState([])
+useEffect(()=>{
+  console.log("Component Mounted")
+})
 
-  function updateName(){
-    setUserName("Anas") 
-    setVersion(1)
-  }
+function addHeading(){
+  
+  setHeadings(headings.push("Heading"))
+}
 
-  return(
-    <div>
-      <NameDisplay key={version} user_name={user_name} />
-      <button onClick={updateName}> Change </button>
-      <button onClick={()=>{setVersion(0)}}> Reset </button>
-    </div>
-  )
+return(
+  <div>
+    {
+      headings.map((h) => <h4>{h}</h4> )
+    }
+   <button onClick={addHeading}>Add a Heading</button>
+  </div>
+)
 }
 
 

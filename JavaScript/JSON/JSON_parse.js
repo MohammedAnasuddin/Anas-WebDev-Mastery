@@ -64,3 +64,15 @@ const user_obj = JSON.parse(user_string,(key,value)=>{
 })
 
 console.table(user_obj) // name     │ 'ANAS'  password │ ' '  
+
+//. .json vs JSON.parse()
+    //. JSON.parse() : 
+    //> Immediately converts string in memory to JSON
+    //> Hence it's a Synchronous
+
+    //. res.json():
+        //> A method that belongs to the Response object you get from fetch().
+        //> Waits for the entire response body stream to be read into text -> Asynchronous
+        //> Then calls JSON.parse() internally to convert that text to a JS object.
+        
+// Tip: For fetch() use .json() and if JSON_String available in memory use JSON.parse()
