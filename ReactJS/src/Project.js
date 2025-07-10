@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import {Body}  from './components/Body';
+import { About } from './components/About';
 import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router';
 import Route_Error from "./components/Route_Error";
 import RestaurantMenu from './components/RestaurantMenu';
@@ -66,12 +67,18 @@ const appRouter = createBrowserRouter([
     },
     {
         path:"/about",
-        element:(
-              <div>
-              <h2>Myself Anasuddin</h2>
-              <h3>Reach me at connect.fsdfgdfbdfb@gmail.com</h3>
-              </div>
-        )
+        element: <About />,
+        children: [
+          {
+            path:"child",
+            element: <h2>Child of About Route with Relative Path(no slash / )</h2>
+          },
+         
+        ]
+    },
+    {
+            path:"/about/child",
+            element: <h2>Absolute Parent  Route</h2>
     },
     {
       path:"/restaurant/:resId",

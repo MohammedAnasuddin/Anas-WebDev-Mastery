@@ -166,8 +166,6 @@ Its job is just to **wrap child routes** with shared layout (e.g., navbar/sideba
 > 
 > For multiple routes place all the `<Route/>` under `<Routes> </Routes>`
 
-
-
 #### Creating the Router
 
 `Router` is an object which responsible for implementing `Routing Mechanism`
@@ -234,8 +232,6 @@ root.render(
   </BrowserRouter>
 )
 ```
-
-
 
 `react-router-dom` aka `rrd` handles the invalid  paths by itself ( 404 NOT Found) 
 
@@ -319,6 +315,16 @@ The path of the parent is automatically included in the child, so this config cr
 
 hence in the `path` of child route don't specify the `/`.
 
+> Absolute route path "/child" nested under path "/about" is not valid. An absolute child route path must start with the combined path of all its parent routes.
+> 
+> Hence keep the children relative i.e, don't prefix child route path with `/` 
+
+
+
+> **If `/about`  has a child route `child`  and there exist a parent route `/about/child` whose element will be rendered?**
+> 
+> `React Router` first matches parent `/about` and then looks for child route to match remainder → `child` hence `element of child route is rendered`
+
 
 
 ### Rendering the Components using `Child_Routes`
@@ -339,6 +345,8 @@ const AppLayout = ()=>(
     </div>
 )    
 ```
+
+
 
 ## Navigating to Different Route
 
