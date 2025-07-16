@@ -142,6 +142,8 @@ Functional Components does not created instances, since they can be used just by
 
 Function Components are <mark>simple but not powerful as Class Components.</mark> 
 
+> Class Components was the primary way to build UI Components until Functional Components were introduced in React v14 in 2015
+
 ##### React Component Instances:
 
 A **React Component Instance** is the **live, running version** of a React Component in memory. 
@@ -319,14 +321,14 @@ keeping remaining intact.
   <div>
       <Card key="1"/>
   </div>
-  
-  
+  ```
+
   // CORRECT
   <div key="1">
       <Card/>
   </div>
-  ```
 
+```
 For example:  if two siblings  components of same type and use indexes as keys
 
 ```js

@@ -1,0 +1,83 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.main{
+    height: 100%;
+    width:100%;
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.nav{
+    height: 1vh;
+    width: 99vw;
+    /* background-color: tomato; */
+    margin: 1vw 1vw 1vw 1vw;
+    display:flex;
+    gap: 1vw;
+    flex-direction: row;
+    padding: 3vw;
+    
+}
+
+.nav i{
+    display: none;
+}
+
+.content{
+    width: 100%;
+    height: calc(100% - 1vh);
+    /* background-color: gray; */
+    display: flex;
+    justify-content: left;
+}
+
+.left{
+    width:50%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 4vw 4vw;
+    line-height: 4vh;
+}
+
+.left .h1{
+    font-size: 4vw;
+    line-height: 8vh;
+    letter-spacing: 0.5vw;
+
+}
+
+.right{
+    width:50%;
+    height: 100%;
+    background-color: blue;
+}
+
+@media (max-width: 600px){
+    .nav h4{
+        display: none;
+    }
+
+    .nav i{
+        display: block;
+        font-size: 3vw;
+    } 
+
+    .content{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .content .left {
+        width: 100%;
+        margin: 2vw;
+        padding: 4vw;
+        line-height: 3.5vh; 
+    }
+}

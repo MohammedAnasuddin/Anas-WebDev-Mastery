@@ -12,7 +12,7 @@ Modify the `"scripts"` object in `package.json`
 ```
 
 > [!TIP]
->
+> 
 > To know how to start a unknown project just checkout scripts from package.json of that project.
 
 To execute the script `npm run script_name`
@@ -24,13 +24,13 @@ To execute the script `npm run script_name`
 Objects created by `React.createElement()` method
 
 > [!TIP]
->
+> 
 > Keep the default innerHTML of an element as **"Not Rendered",** when `.render()` fails to load the element will display Not Rendered and we can debug easily.
 
 ### JSX: JavaScript Syntax
 
 > [!WARNING]
->
+> 
 > JSX is not a part of React and it's not HTML inside JS
 
 JSX merges the Skeleton(HTML) and Logics(JS) in to one.
@@ -38,7 +38,7 @@ JSX merges the Skeleton(HTML) and Logics(JS) in to one.
 JSX replaces Complexity of creating an element using `React.createElement()` by utilizing HTML like syntax. and makes the code cleaner.
 
 > [!NOTE]
->
+> 
 > Both JSX and `React.createElement()` returns the same object.
 
 JS Engines does not understand JSX , its transpiled in browser compatibles form by babel
@@ -58,10 +58,10 @@ Makes the JS browser compatible
 - Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.
 
 - Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
-
+  
   Checkout [Introduction to JSX-React.pdf]()
-
-  ###
+  
+  ### 
 
 ### Multiple Line JSX
 
@@ -81,7 +81,7 @@ To use multiple values inside a JSX use template literals:
 ## React Components
 
 > [!WARNING]
->
+> 
 > Always name components starting with Capital Letter. That's how React Identifies Components.
 
 ### Types of Components:
@@ -107,7 +107,7 @@ const Card = ()=> (<h1>Card Title</h1>
 ```
 
 > [!TIP]
->
+> 
 > Always use arrow functions for creating functional components
 
 #### To Render these Components:

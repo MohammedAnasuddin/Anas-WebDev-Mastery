@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import {Body}  from './components/Body';
-import { About } from './components/About';
+import  About  from './components/About';
 import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router';
 import Route_Error from "./components/Route_Error";
 import RestaurantMenu from './components/RestaurantMenu';
@@ -83,6 +83,10 @@ const appRouter = createBrowserRouter([
     {
       path:"/restaurant/:resId",
       element:<RestaurantMenu/>
+    },
+    {
+      path:"services",
+      element:<h1>Services</h1>
     }
 
 
