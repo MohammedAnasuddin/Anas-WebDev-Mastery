@@ -4,6 +4,9 @@ import restaurant_List from '../utils/cards_mock_data';
 import { useState, useEffect } from 'react';
 import Shimmer_UI from './Shimmer';
 import { Link } from 'react-router';
+import useOnlineStatus from '../utils/useOnlineStatus';
+
+
 const rest_container_styles = {
   height: "70vh",
   margin: "5px",
@@ -567,6 +570,17 @@ setListRestaurants(cards_data)
 // data.cards[4].card.card.gridElements.infoWithStyle.restaurants
 }
 
+const isOnline = useOnlineStatus();
+
+if(isOnline==false){
+  return (
+    <div>
+      <h1>No Internet :(</h1>
+    <h2>Connect to an Network</h2>
+    </div>
+  
+  )
+}
 
 if(list_restaurants.length==0){
   return <Shimmer_UI/>
@@ -636,6 +650,7 @@ return (
         //. Using iteration 
        */}
         {
+
           list_restaurants.map(element => <Link style={{ color: 'inherit', textDecoration: 'inherit'}} key={element.info.id} to={"/restaurant/"+element.info.id} ><RestaurantCard  resData={element.info}/></Link>)
         }
 

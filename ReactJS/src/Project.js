@@ -5,8 +5,12 @@ import {Body}  from './components/Body';
 import  About  from './components/About';
 import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router';
 import Route_Error from "./components/Route_Error";
-import RestaurantMenu from './components/RestaurantMenu';
+import Shimmer_UI from './components/Shimmer';
+import {lazy , Suspense} from 'react';
+ 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const  RestaurantMenu = lazy(()=> import('./components/RestaurantMenu'))
 
 /* 
 . Project Structure
@@ -82,7 +86,10 @@ const appRouter = createBrowserRouter([
     },
     {
       path:"/restaurant/:resId",
-      element:<RestaurantMenu/>
+      element: (<Suspense fallback={<Shimmer_UI/>}>
+          <RestaurantMenu/>
+      </Suspense>
+      )
     },
     {
       path:"services",

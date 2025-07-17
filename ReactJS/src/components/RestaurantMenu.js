@@ -1,31 +1,16 @@
-import {useEffect, useState} from 'react'
+
 import { useParams } from 'react-router';
-import { RESTAURANT_DATA_URL } from '../utils/constants';
+import { useMenuData } from '../utils/useMenuData';
 
 const RestaurantMenu = ()=>{
+    const {resId} = useParams()
+    const resInfo = useMenuData(resId)
 
-    const [resInfo, setResInfo] = useState(null);
-    
-    
-
-    useEffect(  ()=>{
-     fetchMenu()
-    }, [])
-
-  const {resId} = useParams()
-
-
-    const fetchMenu = async () =>{
-        const data = await fetch(RESTAURANT_DATA_URL+resId)
-        const jsonData = await data.json();
-        console.log("Restaurant Data: ", jsonData);
-        setResInfo(jsonData.data)
-    }
 
 
   //Tip: Always use shimmer on top to avoid errors
   //> The code will go below only if the below condition is failed this is Data has been received.
-    if(resInfo == null ) {
+    if(resInfo == null ) { 
         return  <h2>Loading...</h2> 
     } 
     

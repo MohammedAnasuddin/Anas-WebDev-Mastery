@@ -237,3 +237,8 @@ But if you find that you often change two state variables together, it might be 
 State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
 
 Unlike props, **state is fully private to the component declaring it.** The parent component can’t change it. This lets you add state to any component or remove it without impacting the rest of the components.
+
+
+
+> `setState` will always re-render the component that owns that state,  
+> no matter how deep, how nested, or where you call it from.
