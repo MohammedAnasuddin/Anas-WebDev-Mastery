@@ -238,7 +238,26 @@ State is local to a component instance on the screen. In other words, **if you r
 
 Unlike props, **state is fully private to the component declaring it.** The parent component can’t change it. This lets you add state to any component or remove it without impacting the rest of the components.
 
-
-
 > `setState` will always re-render the component that owns that state,  
 > no matter how deep, how nested, or where you call it from.
+
+
+
+## Infinite re - render
+
+```jsx
+onClick={revealDishes()} // ❌
+```
+
+
+❌ Problem:
+Using revealDishes() (with parentheses) calls the function immediately on render, not on click.
+This sets the state (setShowDishes(true)), which causes a re-render, which again calls the function, causing an infinite loop.
+
+
+
+
+
+## Handling Satte for Each Component:
+
+Each and every  Component instance will have it own state (Checkout the components tab in devTools)

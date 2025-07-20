@@ -1,10 +1,11 @@
 
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard ,{withBadge} from './RestaurantCard';
 import restaurant_List from '../utils/cards_mock_data';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Shimmer_UI from './Shimmer';
 import { Link } from 'react-router';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserInfo from '../utils/contexts/UserInfo';
 
 
 const rest_container_styles = {
@@ -552,8 +553,10 @@ const [Component_Data, setComponentData] = useState([]);
 const [list_restaurants, setListRestaurants] = useState([])
 // const [searchResults, setSearchResults] = useState(filtered_list_restaurants);
 const [searchText, setSearchText] = useState("");
+// const {user, setUser} = 
+const {name:userName, setUserInfo} = useContext(UserInfo);
 useEffect( ()=>{
-  console.log("Component Mounted")
+  // console.log("Component Mounted")
    fetchData()
 }, [])
 
@@ -565,12 +568,15 @@ const cards_data = json_data?.data?.cards[4]?.card?.card?.gridElements?.infoWith
 
 setComponentData(cards_data)
 setListRestaurants(cards_data)
+// console.log(cards_data);
 
 
 // data.cards[4].card.card.gridElements.infoWithStyle.restaurants
 }
 
 const isOnline = useOnlineStatus();
+
+const RCwithBadge = withBadge(RestaurantCard);
 
 if(isOnline==false){
   return (
@@ -586,7 +592,7 @@ if(list_restaurants.length==0){
   return <Shimmer_UI/>
 }
 
-console.log("Component Data: ", Component_Data)
+// console.log("Component Data: ", Component_Data)
 return (
   <div className="body">
       <div className="search-box">
@@ -609,6 +615,11 @@ return (
               }
             }
           }>Search For It</button>
+      </div>
+      <div className="search-box">
+          <input type="text" className="search-input" style={{height: "25px", margin:"4px"}} value={userName} onChange={(e)=>{
+          setUserInfo(e.target.value)
+          }}/>
       </div>
       <div className="filter">
         <button className="filter-bth" style={button_style} onClick={()=>{ 
@@ -651,7 +662,19 @@ return (
        */}
         {
 
-          list_restaurants.map(element => <Link style={{ color: 'inherit', textDecoration: 'inherit'}} key={element.info.id} to={"/restaurant/"+element.info.id} ><RestaurantCard  resData={element.info}/></Link>)
+          list_restaurants.map(element => <Link style={{ color: 'inherit', textDecoration: 'inherit'}} key={element.info.id} to={"/restaurant/"+element.info.id} >
+            {
+              (element.info.avgRating >=4.3) ? <RCwithBadge resData={element.info}/> 
+              : 
+              <RestaurantCard  resData={element.info}/>
+              
+            }
+            {/* <RestaurantCard  resData={element.info}/> */}
+            
+
+            </Link>)
+        // If the reaaurnat is >4.5 makr irt with crwon 
+        
         }
 
   
@@ -661,5 +684,9 @@ return (
   </div>
 )
 }
+
+
+
+
 
 export {Body, rest_container_styles, button_style} 

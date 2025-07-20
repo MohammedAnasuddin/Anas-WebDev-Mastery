@@ -62,8 +62,6 @@ function SaveButton() {
 
 This is why, like components, custom Hooks and  Because custom Hooks re-render together with your component, **they always receive the latest props and state.**
 
-
-
 ## When to use Custom Hooks
 
 You don’t need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine.
@@ -74,8 +72,6 @@ Wrapping it into a custom Hook lets you precisely communicate your intent and ho
 
 By “hiding” your Effect inside `customHooks`, you also prevent someone working on the  component from adding unnecessary dependencies to it.
 
-
-
 #### use custom Hooks to wrap Effects:
 
 Because:
@@ -84,7 +80,7 @@ Because:
 
 2. components focus on the intent rather than on the exact implementation of your Effects.
 
-3.  When React adds new features, you can remove those Effects without changing any of your components.
+3. When React adds new features, you can remove those Effects without changing any of your components.
 
 ### Tips to develop a Custom Hook
 
@@ -95,7 +91,5 @@ Because:
 2. A good custom Hook makes the calling code more declarative by constraining what it does. If your custom Hook  **doesn’t constrain the use cases and is very abstract, in the long run it’s likely to introduce more problems than it solves.**
 
 3. Avoid creating and using custom “lifecycle” Hooks that act as alternatives to existing hooks. `useEffectOnce()` is a big no.
-
-
 
 > **escape hatch** : you use them when you need to “step outside React” and when there is no better built-in solution for your use case. `useEffect()` helps to perform escape hatches.

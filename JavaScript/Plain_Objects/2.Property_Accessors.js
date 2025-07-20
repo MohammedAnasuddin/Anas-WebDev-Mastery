@@ -40,6 +40,10 @@
     
     //Tip : You can have a space between Object [key]
     console.log("Space is allowed: ",obj ["Key_1"]) 
+
+    //Tip: SUe this when the key of an property is incorrect indentifier
+    //> for example if key is @type , JS will throw error 
+    //- so use .["@type"] toa cess the property without error.
     
     //Note: Using expression can cause 
     //

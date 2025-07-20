@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import {Body}  from './components/Body';
 import  About  from './components/About';
-import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet } from 'react-router';
+import { BrowserRouter, createBrowserRouter, RouterProvider, Outlet, useSearchParams } from 'react-router';
 import Route_Error from "./components/Route_Error";
 import Shimmer_UI from './components/Shimmer';
 import {lazy , Suspense} from 'react';
- 
+import UserInfo from "./utils/contexts/UserInfo"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const  RestaurantMenu = lazy(()=> import('./components/RestaurantMenu'))
@@ -49,13 +49,28 @@ const  RestaurantMenu = lazy(()=> import('./components/RestaurantMenu'))
 
 
 
-const AppLayout = ()=>(
-    <div id="app"> 
-    <Header/>
-    <Outlet/>
-    </div>
-)
+const AppLayout = ()=>{
+const [userInfo, setUserInfo] = useState();
 
+useEffect(()=>{
+  const data = {
+    name:"Anas"
+  }
+  setUserInfo(data.name)
+},[])
+ 
+ 
+ 
+  return (
+
+      <UserInfo.Provider value={{name:userInfo,setUserInfo}} >
+        <div id="app">
+              <Header/>
+              <Outlet/>
+        </div>
+        </UserInfo.Provider>
+)
+}
 
 const appRouter = createBrowserRouter([
 
