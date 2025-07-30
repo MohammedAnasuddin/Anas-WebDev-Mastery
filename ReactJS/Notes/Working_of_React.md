@@ -322,8 +322,9 @@ keeping remaining intact.
       <Card key="1"/>
   </div>
   ```
-
+  
   // CORRECT
+  
   <div key="1">
       <Card/>
   </div>

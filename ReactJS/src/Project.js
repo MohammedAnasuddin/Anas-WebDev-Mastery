@@ -8,6 +8,12 @@ import Route_Error from "./components/Route_Error";
 import Shimmer_UI from './components/Shimmer';
 import {lazy , Suspense} from 'react';
 import UserInfo from "./utils/contexts/UserInfo"
+import { Provider } from 'react-redux';
+import appStore from './utils/store';
+import Cart from "./components/Cart"
+import Contact from "./components/Contact"
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const  RestaurantMenu = lazy(()=> import('./components/RestaurantMenu'))
@@ -62,13 +68,14 @@ useEffect(()=>{
  
  
   return (
-
+    <Provider store={appStore}>
       <UserInfo.Provider value={{name:userInfo,setUserInfo}} >
         <div id="app">
               <Header/>
               <Outlet/>
         </div>
         </UserInfo.Provider>
+    </Provider>
 )
 }
 
@@ -83,6 +90,14 @@ const appRouter = createBrowserRouter([
     {
         path:"/",
         element:<Body/>
+    },
+    {
+        path:"/cart",
+        element:<Cart/>
+    },
+    {
+        path:"/contact",
+        element:<Contact/>
     },
     {
         path:"/about",

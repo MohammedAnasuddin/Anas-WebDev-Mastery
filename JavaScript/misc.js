@@ -18,7 +18,7 @@ const heyYou = hey + ' ' + you;
 //> Hoisting is JavaScript's default behavior of moving declarations to the top.
 
 //> let, const, and class as non-hoisting, because the temporal dead zone strictly forbids any use of the variable before its declaration.
-//Tip: start of the block until code execution reaches the place where the variable is declared and initialized.
+//Tip: TDZ -> start of the block until code execution reaches the place where the variable is declared and initialized.
 {
     /*
     This is TDZ you cant access the variable here

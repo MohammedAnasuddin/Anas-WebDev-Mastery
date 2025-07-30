@@ -5,17 +5,19 @@ import { Link } from 'react-router'
 import useOnlineStatus from '../utils/useOnlineStatus';
 import { useContext } from 'react';
 import  UserInfo  from '../utils/contexts/UserInfo';
+import { useSelector } from 'react-redux';
 
 const Header = ()=>{
 
-
+  
+  const cartItems = useSelector((store)=> store.cart.items)
   const [button_content, setButton_Content] = useState("Login"); 
 
   const onlineStatus = useOnlineStatus();
   const data = useContext(UserInfo);
   console.log("UseINfo in Header:", data)
   const {name:userName} = data;
- 
+ console.log("Cart Length: ",cartItems)
   
   return (
   
@@ -31,6 +33,7 @@ const Header = ()=>{
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/services">Services</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/cart">Cart- {cartItems.length} items</Link></li>
                 {/* {
                    userName=="guest" ? <li>Hey, {userName}!!</li>
                    :

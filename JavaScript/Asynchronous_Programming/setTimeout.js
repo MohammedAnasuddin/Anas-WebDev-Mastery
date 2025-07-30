@@ -13,7 +13,7 @@ setTimeout(()=>{
 //. delay parameter
 //> By default 0 and should only be a Number, which represents milliseconds
 //> Any other Datatype used, it will be converted to 0 (i.e, immediate execution no delay)
-// fact: delay is 32-bit Integer hence max delay possible is 24.8 days
+//- fact: delay is 32-bit Integer hence max delay possible is 24.8 days
 
 //Note: The delay of execution won't be exactly as mentioned in parameter they might be latency 
         //> 1. After every 5 nested setTimeouts , browser will perform delay of 4 milliseconds

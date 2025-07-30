@@ -27,7 +27,7 @@ class About extends Component{
             return (
            <div>
                <h2>Meet our Team</h2>
-              <div style={{display:"flex"}}>
+              {/* <div style={{display:"flex"}}>
               <Team_Member name={"Child 1"} role={"Role 1"} count={1}/>
 
 
@@ -39,7 +39,7 @@ class About extends Component{
             
               <Outlet/>
         
-              </div>
+              </div> */}
            </div>
         )
     }

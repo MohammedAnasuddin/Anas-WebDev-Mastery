@@ -4,7 +4,7 @@
   "description": "Creating our own Production Ready React App",
   "scripts": {
     "test": "jest",
-    "start": "parcel index.html",
+    "start": "parcel .\\Building\\Project.html",
     "build": "parcel build index.html",
     "notes": "parcel Notes\\notes.html"
   },
@@ -12,10 +12,22 @@
   "license": "ISC",
   "dependencies": {
     "@carbon/react": "^1.87.0",
+    "@reduxjs/toolkit": "^2.8.2",
     "parcel": "^2.15.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router": "^7.6.3",
     "remixicon": "^4.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "babel-jest": "^30.0.5",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5"
   }
 }

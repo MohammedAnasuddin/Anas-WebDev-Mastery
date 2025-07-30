@@ -16,7 +16,7 @@
 1. Start building Top - Level Components
 
 > [!TIP]
->
+> 
 >   Repeating Components should be coded once and then used multiple times to maintain modularity.
 
 ### Styling Attribute:
@@ -30,8 +30,6 @@ which should be injected using `{}`
 ```
 
 *React' s Philosophy write everything in JS*
-
-
 
 #### Making Dynamic Components
 
@@ -58,15 +56,12 @@ Just like attribute and value in a react element.
 
 React gathers all these properties convert it to a object and passes to the function of the component..    the object is given name of `props` 
 
-
-
 props are used using { } in the function JSX
 
 ```js
 const Function_Component=(props)=>(
 <element>{props.property1}</element>
 )
-
 ```
 
 or You could destructure it.
@@ -77,7 +72,7 @@ const Function_Component=({property1, property2})=>(
 )
 ```
 
-#### Method-2: using JSON 
+#### Method-2: using JSON
 
 Data received as JSON
 
@@ -88,11 +83,11 @@ controlling UI using the data received from backend.
 Example, food ordering website shows different restaurants available on the user location.
 
 > [!TIP]
->
+> 
 > A good frontend engineer would always care for the data receiving from the api.
->
+> 
 > Question api why this data is being shared?
->
+> 
 > A good front end engineer always concerned about the  UI and Data Layer
 
 JSON Data are usually large the easy way to pass them:
@@ -107,7 +102,6 @@ large key value-pairs
 const Function_Component=(dataOBJ)=>(
 <element>{dataOBJ.dataOBJ.property}</element>
 )
-
 ```
 
  **Explanation: **React wraps every attribute into an object
@@ -122,7 +116,7 @@ const Function_Component=(dataOBJ)=>(
 }
 
 // This new object will be passed 
- 
+
 
 // when used  
 const Function_Component=(dataOBJ)=>(
@@ -142,10 +136,6 @@ const {compoentData} = dataOBJ
 //This will directly give you the access to the object containg required properties
 
 // use it as compoentData.property
-
-
-
-
 ```
 
 **Remember the syntax:**
@@ -157,8 +147,6 @@ Component= (props)=> {
 const {key_name} = props
 }
 ```
-
-
 
 In Real-world, The data will always be a list of objects.
 
@@ -178,28 +166,25 @@ item:3
 ]
 ```
 
-
-
 #### Creating Reusable Components
 
 **Best Pratices:**
 
 1. Always destructor your props
-
+   
    ```js
    const {property1, property2} = Object_name
    
    //Note: these proprties should exactly match the keys of the object
-   
    ```
 
-2.  **Iterate over list of data to create components:**
-
+2. **Iterate over list of data to create components:**
+   
    > [!IMPORTANT]
-   >
+   > 
    > Always use array methods to iterate .map() .filter(), and reduce() rather than loops .
 
-​	
+​    
 
 ```js
 {
@@ -213,15 +198,9 @@ Compoent = (prop_identifier)=>{
 }
 ```
 
-
-
-
-
 > [!IMPORTANT]
->
+> 
 > Hence React gets the markup and logics together at single file via JSX
-
-
 
 While dynamically rendering components are rendered React suggest to provide unique key to  each component element being created.
 
@@ -236,10 +215,9 @@ here `key` is the reserved word.
 This is to optimize the rendering,  If a new item is added since React knows the id's of the existing components it will just add the new component rather then re-rendering all the existing component's of the same level/container.
 
 > [!IMPORTANT]
->
+> 
 > Always use `key` when `.map()` is used.
 
 > [!CAUTION]
->
+> 
 > Never use `index` as key
-

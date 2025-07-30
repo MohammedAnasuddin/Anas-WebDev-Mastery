@@ -4,7 +4,7 @@
 
 //- accumulator is the collective value of all the previous elements and passed in callback Fn
 //Note: InitialValue is optional 
-//> On first cal on first element of array there is no value of previous return
+//> On first call on first element of array there is no value of previous return
 //- If initialValue it will act as previous return value to the first call.
 //-x If not provided first element is used as initial value and iteration proceeds to next element 
 

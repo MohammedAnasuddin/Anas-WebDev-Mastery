@@ -81,8 +81,6 @@ The lazy component should then be rendered inside a `Suspense` component, whic
 > 
 > React will wait until all the lazy components inside that <Suspense> resolve. Until then, the fallback content is shown.
 
-
-
 ### Handling Errors
 
 If the lazy component fails to load (for example, due to network failure), it will trigger an error. You can handle these errors to show a nice user experience and manage recovery with `Error Boundaries`
@@ -128,8 +126,6 @@ const App = () => (
   </Router>
 );
 ```
-
-
 
 ### Component Based Code Splitting
 

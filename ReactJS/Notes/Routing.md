@@ -319,13 +319,9 @@ hence in the `path` of child route don't specify the `/`.
 > 
 > Hence keep the children relative i.e, don't prefix child route path with `/` 
 
-
-
 > **If `/about`  has a child route `child`  and there exist a parent route `/about/child` whose element will be rendered?**
 > 
 > `React Router` first matches parent `/about` and then looks for child route to match remainder → `child` hence `element of child route is rendered`
-
-
 
 ### Rendering the Components using `Child_Routes`
 
@@ -345,8 +341,6 @@ const AppLayout = ()=>(
     </div>
 )    
 ```
-
-
 
 ## Navigating to Different Route
 

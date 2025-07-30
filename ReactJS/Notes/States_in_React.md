@@ -241,23 +241,85 @@ Unlike props, **state is fully private to the component declaring it.** The pare
 > `setState` will always re-render the component that owns that state,  
 > no matter how deep, how nested, or where you call it from.
 
-
-
 ## Infinite re - render
 
 ```jsx
 onClick={revealDishes()} // ❌
 ```
 
-
 ❌ Problem:
 Using revealDishes() (with parentheses) calls the function immediately on render, not on click.
 This sets the state (setShowDishes(true)), which causes a re-render, which again calls the function, causing an infinite loop.
 
-
-
-
-
-## Handling Satte for Each Component:
+## Handling State for Each Component:
 
 Each and every  Component instance will have it own state (Checkout the components tab in devTools)
+
+### Sharing State Between Components
+
+Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up*
+
+### Steps to lift up the state
+
+1. **Remove** state from the child components.
+   
+   1. This means that the parent component will pass `state` to `Child` as a prop instead.
+   2. Remove required  `state` definition from the `child` 
+   3. Add the removed `state` to the `props` destructing of `child`
+   
+   ```js
+   function Child = (props)=>{
+       cosnt {state} = props;
+   }
+   ```
+
+2. **Pass** hardcoded data from the common parent.
+   
+   1. Since `state` has become a `prop` pass a hardcoded value in the `prop`
+   2. `<Child state={value}>`
+
+3. **Add** state to the common parent and pass it down together with the event handlers.
+   1. A `child` can’t set the `state`  directly because it’s defined inside the `Parent`. 
+   2. The `Parent` component needs to *explicitly allow* the `Child` component to change its state by passing an event handler down as a prop. (Generally, these would be callbacks which calls the `setState()` of the `common state` to update it)
+   
+   
+   
+   pass the `setState` of the `state` as a function in props.
+   
+   ```js
+   //Parent
+   
+   const [parent_state , setParentState] = useState()
+   
+   
+   
+   <Child stateHandler={()=> setParentState()}
+   // Don't directly pass the setState 
+   // since it will triggers a re-render
+   // we need to pass it as a result of an function ,
+   // we will call this function when needed
+   ```
+   
+   in child component
+   
+   ```js
+   cosnt Child =(props)=>{
+       const {stateHandler} = props;
+   
+       const timeToChange = ()=>{
+       stateHandler()
+       }
+   }
+   ```
+
+
+
+#### Controlled and Uncontrolled Components:
+
+When a Component has it's *own state* it can *control itself* hence these components are known as **Uncontrolled Component**
+
+Uncontrolled components are easier to use within their parents because they require less configuration. *But they’re less flexible when you want to coordinate them together*.
+
+If the state(component) is controlled by parent/external component it is **Controlled Component.** parent component fully specify its behavior.
+
+Controlled components are **maximally flexible**, but they *require the parent components to fully configure them with props.*

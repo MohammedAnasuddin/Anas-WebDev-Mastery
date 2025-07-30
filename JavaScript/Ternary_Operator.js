@@ -14,7 +14,7 @@ console.log("Current User: "+user_name); //Current User: Guest
 
 let Bool_False = new Boolean(false);
 console.log(Bool_False? "True": "False")
-
+//> True since Bool_False is object which comes under Truthy values.
 
 //. Ternary Chaining
 //> condition-1 ? (condition-2 ? expIfCond2 : elseCond2) : expElseCOnd-1 
