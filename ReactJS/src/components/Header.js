@@ -15,9 +15,9 @@ const Header = ()=>{
 
   const onlineStatus = useOnlineStatus();
   const data = useContext(UserInfo);
-  console.log("UseINfo in Header:", data)
+  // console.log("UseINfo in Header:", data)
   const {name:userName} = data;
- console.log("Cart Length: ",cartItems)
+//  console.log("Cart Length: ",cartItems)
   
   return (
   
@@ -34,11 +34,18 @@ const Header = ()=>{
                 <li><Link to="/services">Services</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
                 <li><Link to="/cart">Cart- {cartItems.length} items</Link></li>
-                {/* {
-                   userName=="guest" ? <li>Hey, {userName}!!</li>
-                   :
-                   <li  onClick={()=>{button_content=="Login" ? setButton_Content("Logout"): setButton_Content("Login")}}  > {button_content}  </li>      
-                } */}
+                <button style={{
+                  borderRadius: "4px", 
+                  border:"none",
+                  width:"6vw", 
+                  height:"3vw", 
+                  padding:"6px",
+                  margin:"0px" , 
+                  backgroundColor:"orangered" , 
+                  fontWeight:"bolder",
+                  color:"whitesmoke", 
+                  fontSize:"1.05rem" }} onClick={()=>{button_content=="Login" ? setButton_Content("Logout"): setButton_Content("Login")}}  > {button_content}  </button>    
+                
 
                 <li>Hey, {userName}</li>
               

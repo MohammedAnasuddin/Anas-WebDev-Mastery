@@ -4,6 +4,8 @@ const RestaurantCard = (props)=>{
 // console.table(resData)
 // const data = props.resData.data;
 // console.table("Original Props: ",props)
+
+// console.log(props)
  const {
    name, 
    areaName, 
@@ -13,7 +15,7 @@ const RestaurantCard = (props)=>{
    cloudinaryImageId
 } = props.resData
 
-  return ( <div className="rest-card">
+  return ( <div data-testid="Rcard" className="rest-card">
      <img src={IMG_URL+cloudinaryImageId} style={{width: "100%",height:"50%", borderRadius:"15px 15px 0px 0px"}}/>
      <div className="description">
       <h3 style={{lineHeight:"20px"}}>{name}</h3>

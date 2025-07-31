@@ -596,7 +596,7 @@ if(list_restaurants.length==0){
 return (
   <div className="body">
       <div className="search-box">
-          <input type="text" className="search-input" style={{height: "25px", margin:"4px"}} value={searchText} onChange={(e)=>{
+          <input data-testid="search_inp" type="text" className="search-input" style={{height: "25px", margin:"4px"}} value={searchText} onChange={(e)=>{
             setSearchText(e.target.value)
           }}/>
           <button className="search_button" style={button_style} onClick={

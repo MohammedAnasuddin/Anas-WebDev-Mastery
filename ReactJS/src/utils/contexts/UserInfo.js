@@ -4,6 +4,6 @@ import { createContext } from "react";
     name: "guest",
     id:"-1"
 })
-console.log("User Context Object: ",UserInfo)
+// console.log("User Context Object: ",UserInfo)
 
 export default UserInfo
