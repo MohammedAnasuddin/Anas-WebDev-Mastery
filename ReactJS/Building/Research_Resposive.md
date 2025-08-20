@@ -159,17 +159,7 @@ function cropAndResizeRight() {
 })();
 ```
 
-
-
-
-
 First scale to half indow size and then splice
-
-
-
-
-
-
 
 ```js
 //> Scale first then splice
@@ -242,5 +232,24 @@ function scaleAndCropRight() {
     console.error('Something went wrong:', err);
   }
 })();
-
 ```
+
+
+
+
+
+## Alternatove solution:
+
+## Legal & Safe Alternative: Use **YouTube embed + pan-only feature**
+
+If you **must use a YouTube URL**, the **safe and legal approach is**:
+
+1. Use an iframe with the embedded video.
+
+2. Zoom the entire iframe using CSS `transform: scale()` (even though you can't zoom *just* the video).
+
+3. Allow panning (dragging) of the iframe inside a container.
+
+This gives a **fake zoom+drag effect** on the video — even if it’s not perfect.
+
+![](G:\SKILLS\Full%20Stack%20Devlopment\WEB%20DEV\Learning-Web-Devlopment-MERN-Stack\ReactJS\Building\iframe%20Working.png)

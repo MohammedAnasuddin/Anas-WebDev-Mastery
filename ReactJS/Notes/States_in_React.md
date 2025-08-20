@@ -279,40 +279,37 @@ Sometimes, you want the state of two components to always change together. To do
    2. `<Child state={value}>`
 
 3. **Add** state to the common parent and pass it down together with the event handlers.
+   
    1. A `child` can’t set the `state`  directly because it’s defined inside the `Parent`. 
    2. The `Parent` component needs to *explicitly allow* the `Child` component to change its state by passing an event handler down as a prop. (Generally, these would be callbacks which calls the `setState()` of the `common state` to update it)
-   
-   
-   
+
    pass the `setState` of the `state` as a function in props.
-   
-   ```js
-   //Parent
-   
-   const [parent_state , setParentState] = useState()
-   
-   
-   
-   <Child stateHandler={()=> setParentState()}
-   // Don't directly pass the setState 
-   // since it will triggers a re-render
-   // we need to pass it as a result of an function ,
-   // we will call this function when needed
-   ```
-   
+
+```js
+//Parent
+
+const [parent_state , setParentState] = useState()
+
+
+
+<Child stateHandler={()=> setParentState()}
+// Don't directly pass the setState 
+// since it will triggers a re-render
+// we need to pass it as a result of an function ,
+// we will call this function when needed
+```
+
    in child component
-   
-   ```js
-   cosnt Child =(props)=>{
-       const {stateHandler} = props;
-   
-       const timeToChange = ()=>{
-       stateHandler()
-       }
-   }
-   ```
 
+```js
+cosnt Child =(props)=>{
+    const {stateHandler} = props;
 
+    const timeToChange = ()=>{
+    stateHandler()
+    }
+}
+```
 
 #### Controlled and Uncontrolled Components:
 

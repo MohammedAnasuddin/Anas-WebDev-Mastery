@@ -1,0 +1,269 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoom + Pan YouTube Iframe</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      display:flex;
+      flex-direction: row;
+    }
+
+    .controls {
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    #zoomLabel {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .wrapper {
+      width: 683px;
+      height: 768px;
+      overflow: hidden;
+      border: 2px solid #ccc;
+      position: relative;
+      background: #000;
+    }
+
+    .iframe-container {
+      width: 683px;
+      height: 768px;
+      transform-origin: top left;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: grab;
+      transition: transform 0.2s ease;
+    }
+
+    .iframe-container.dragging {
+      cursor: grabbing;
+    }
+
+    iframe {
+      width: 683px;
+      height: 768px;
+      border: none;
+      pointer-events: none; /* So user can drag over iframe */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Zoom & Drag YouTube Iframe</h2>
+
+  <div class="controls">
+    <button onclick="zoomIn()">Zoom In</button>
+    <button onclick="zoomOut()">Zoom Out</button>
+    <span id="zoomLabel">Zoom: 1.0x</span>
+  </div>
+
+  <div class="wrapper" id="wrapper">
+    <div class="iframe-container" id="iframeContainer">
+      <iframe
+        src="https://www.youtube.com/embed/sb4Nnc6VtZI?si=LRle6444Rks_0F1Y"
+        title="YouTube video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    let scale = 1;
+    let pos = { x: 0, y: 0 };
+    let start = { x: 0, y: 0 };
+    let isDragging = false;
+
+    const container = document.getElementById("iframeContainer");
+    const wrapper = document.getElementById("wrapper");
+    const zoomLabel = document.getElementById("zoomLabel");
+
+    function applyTransform() {
+      container.style.transform = `translate(${pos.x}px, ${pos.y}px) scale(${scale})`;
+      zoomLabel.textContent = `Zoom: ${scale.toFixed(1)}x`;
+    }
+
+    function zoomIn() {
+      scale = Math.min(scale + 0.1, 3);
+      applyTransform();
+    }
+
+    function zoomOut() {
+      scale = Math.max(scale - 0.1, 1);
+      if (scale === 1) {
+        pos = { x: 0, y: 0 }; // reset position
+      }
+      applyTransform();
+    }
+
+    // Dragging logic
+    container.addEventListener("mousedown", (e) => {
+      if (scale === 1) return;
+      isDragging = true;
+      start = {
+        x: e.clientX - pos.x,
+        y: e.clientY - pos.y,
+      };
+      container.classList.add("dragging");
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+      container.classList.remove("dragging");
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      pos.x = e.clientX - start.x;
+      pos.y = e.clientY - start.y;
+      applyTransform();
+    });
+
+    applyTransform();
+  </script>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoom & Pan YouTube Embed</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .left-panel {
+      width: 50%;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    .right-panel {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      background: black;
+      overflow: hidden;
+    }
+
+    .iframe-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: grab;
+      transform-origin: top left;
+    }
+
+    iframe {
+      width: 1368px; /* Full size for zoom reference */
+      height: 768px;
+      pointer-events: auto;
+    }
+
+    .zoom-controls {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h2>Video Controls</h2>
+      <div class="zoom-controls">
+        <label for="zoomRange">Zoom: </label>
+        <input type="range" id="zoomRange" min="1" max="2" step="0.01" value="1" />
+      </div>
+      <p>Drag the video on the right side to pan after zooming.</p>
+    </div>
+
+    <div class="right-panel">
+      <div class="iframe-wrapper" id="iframeWrapper">
+        <iframe
+          src="https://www.youtube.com/embed/sb4Nnc6VtZI?si=LRle6444Rks_0F1Y&rel=0&autoplay=0"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const zoomRange = document.getElementById("zoomRange");
+    const iframeWrapper = document.getElementById("iframeWrapper");
+
+    let scale = 1;
+    let pos = { x: 0, y: 0 };
+    let isDragging = false;
+    let start = { x: 0, y: 0 };
+
+    // Handle zoom
+    zoomRange.addEventListener("input", (e) => {
+      scale = parseFloat(e.target.value);
+      updateTransform();
+    });
+
+    // Mouse drag handlers
+    iframeWrapper.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      start.x = e.clientX - pos.x;
+      start.y = e.clientY - pos.y;
+      iframeWrapper.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      iframeWrapper.style.cursor = "grab";
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      pos.x = e.clientX - start.x;
+      pos.y = e.clientY - start.y;
+      updateTransform();
+    });
+
+    function updateTransform() {
+      iframeWrapper.style.transform = `translate(${pos.x}px, ${pos.y}px) scale(${scale})`;
+    }
+
+    // Set initial grab cursor
+    iframeWrapper.style.cursor = "grab";
+  </script>
+</body>
+</html>

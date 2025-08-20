@@ -374,8 +374,6 @@ await act(async ()=>  render( <Body/> ))
 > 
 > Provide the `data-testid` attribute and select them by *All* method and you can get the length of array which is no. of components rendered.
 
- 
-
 > **Typing into an Input**
 > 
 > Since we don't have `e` from the browser in `js-dom` we need to explicitly pass the target and value. 
@@ -391,8 +389,6 @@ await act(async ()=>  render( <Body/> ))
 > 2. `beforeAll(()=> {})`: Anything inside callback will run before `describe`  
 > 
 > 3. similarly we have `afterEach()` and `afterAll()` to for post execution. 
-
-
 
 ### Test 2.2: Testing whole cart flow
 
