@@ -1,0 +1,1 @@
+The optimal strategy for web performance is to use both minification and Gzip compression. Minify the code first to remove all unnecessary characters, and then apply Gzip compression to the already minified file. This combined approach yields the greatest reduction in file size, leading to faster page load times and a more efficient user experience.
