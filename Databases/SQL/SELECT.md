@@ -36,7 +36,7 @@ To retrieve data from a SQL database, we need to write `SELECT` statements, wh
 
 > As you might have noticed by now, SQL doesn't *require* you to write the keywords all capitalized, but as a convention, it helps people distinguish SQL keywords from column and tables names, and makes the query easier to read.
 
-## WHERE QUERIES
+### WHERE QUERIES
 
 In order to filter certain results from being returned, we need to use a `WHERE` clause in the query.
 
@@ -52,7 +52,7 @@ WHERE condition
     AND/OR …;
 ```
 
-## Filtering Numeric Data
+#### Filtering Numeric Data
 
 useful operators that you can use to filter numerical data (ie. integer or floating point):
 
@@ -66,7 +66,7 @@ useful operators that you can use to filter numerical data (ie. integer or float
 
 ### 
 
-### Filtering Text Data
+#### Filtering Text Data
 
 SQL supports a number of useful operators to do things like case-insensitive string comparison and wildcard pattern matching.
 
@@ -101,9 +101,9 @@ FROM table_name
 WHERE column_name IS NULL / NOT NULL;
 ```
 
-## Filtering and Sorting Results
+### Filtering and Sorting Results
 
-### Removing Duplicates
+#### Removing Duplicates
 
 SQL provides a convenient way to discard rows that have a duplicate column value by using the `DISTINCT` keyword.
 
@@ -121,7 +121,7 @@ WHERE condition(s);
 
 > We can discard duplicates based on specific columns using grouping and the `GROUP BY` clause.
 
-### Ordering(Arranging) Results
+#### Ordering(Arranging) Results
 
 SQL provides a way to sort your results by a given column in ascending or descending order using the `ORDER BY` clause.
 
@@ -138,7 +138,7 @@ ORDER BY column ASC/DESC;
 
 > `ASC` is the default sorting order if nothing is specified.
 
-### Limiting Results
+#### Limiting Results
 
 `LIMIT` and `OFFSET` clauses, which are a useful optimization to indicate to the database the subset of the results you care about.
 
@@ -166,7 +166,7 @@ LIMIT num_limit OFFSET num_offset;
 > 
 > So **How Could you skip rows before getting the results?**
 
-## JOINS
+### JOINS
 
 Entity data in the real world is often broken down into pieces and stored across multiple orthogonal tables using a process known as normalization
 
@@ -236,6 +236,11 @@ INNER/LEFT/RIGHT/FULL JOIN another_table
     ON mytable.id = another_table.matching_id
 ```
 
+> ![enter image description here](.\SELECT\Venn%20Intersection.png)
+> The overlap is known as the ***Intersection***, and it represents all common/matched rows from both the Tables. 
+> `INNER JOIN` got its name Since it retrieves all the rows from **INSIDE** the Intersection and  
+> `OUTER JOIN` because it retrieves rows from Inside and **Outside** of the Intersection (Depending on the type of `JOIN`)
+
 Consider two tables:  
 
 - A- Left Table
@@ -258,10 +263,146 @@ Consider two tables:
 
 `FULL JOIN` simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.
 
-![](.\SQL%20JOINS.png)
+![](.\SELECT\SQL%20JOINS.png)
 
 > `NOTE`
 > 
 > When using any of these new joins, you will likely have to write additional logic to deal with `NULL`
 > 
 > You might see queries with these joins written as `LEFT OUTER JOIN`, `RIGHT OUTER JOIN`, or `FULL OUTER JOIN`, but the `OUTER` keyword is really kept for SQL-92 compatibility and these queries are simply equivalent to `LEFT JOIN`, `RIGHT JOIN`, and `FULL JOIN` respectively.
+
+> Checkout `Working OF JOINS.tldr` and `Comparsion OF JOINS.pdf`
+
+#### NULL and JOINS
+
+It's always good to reduce the possibility of `NULL` values in databases because they require special attention when constructing queries,constraints (certain functions behave differently with null values) and when processing the results.
+
+> An alternative to `NULL` values in your database is to have *data-type appropriate default values*, like 0 for numerical data, empty strings for text data.
+> 
+> To store incomplete data, then `NULL` values can be appropriate if the default values.
+
+ You can test a column for `NULL` values in a `WHERE` clause by using either the `IS NULL` or `IS NOT NULL` constraint.
+ 
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE column IS/IS NOT NULL
+```
+
+### Evaluating Expressions and Aliases
+
+The use of expressions can save time and extra post-processing of the result data, but can also make the query harder to read, so we recommend that when expressions are used in the `SELECT` part of the query, that they are also given a descriptive *alias* using the `AS` keyword.
+
+```sql
+SELECT col_expression AS expr_description, …
+FROM mytable;
+```
+
+> Use `ROUND(col_expression)` on Numeric Data for better readable values.
+
+### Aggregate Functions
+
+Aggregate expressions (or functions) allows you to summarize information about a group of rows of data.
+
+Give your aggregate functions an alias this ensures that the results will be easier to read and process.
+
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+```
+
+> Without a specified grouping, each aggregate function is going to run on the whole set of result rows and return a single value. 
+
+| Function                        | Description                                                                                                                                                                                     |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **COUNT(*)**, **COUNT(column)** | A common function used to counts the number of rows in the group if no column name is specified. Otherwise, count the number of rows in the group with non-NULL values in the specified column. |
+| MIN(**column**)                 | Finds the smallest numerical value in the specified column for all rows in the group.                                                                                                           |
+| MAX(**column**)                 | Finds the largest numerical value in the specified column for all rows in the group.                                                                                                            |
+| AVG(column)                     | Finds the average numerical value in the specified column for all rows in the group.                                                                                                            |
+| SUM(**column**)                 | Finds the sum of all numerical values in the specified column for the rows in the group.                                                                                                        |
+
+In addition to aggregating across all the rows, you can instead apply the aggregate functions to individual groups of data within that group.
+
+This would then create as many results as there are unique groups defined as by the `GROUP BY` clause.
+
+The `GROUP BY` clause works by grouping rows that have the same value in the column specified.
+
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression
+GROUP BY column;
+```
+
+#### Filtering Grouped Data
+
+> if the `GROUP BY` clause is executed after the `WHERE` clause (which filters the rows which are to be grouped), then how exactly do we filter the grouped rows?
+
+SQL allows us to do this by adding an additional `HAVING` clause which is used specifically with the `GROUP BY` clause to allow us to filter grouped rows from the result set.
+ The `HAVING` clause constraints are written the same way as the `WHERE` clause constraints, and are applied to the grouped rows.
+
+```sql
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition;
+```
+
+## Execution Order of SELECT Clause
+
+Complete `SELECT` QUERY
+
+```sql
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+    WHERE constraint_expression
+    GROUP BY column
+    HAVING constraint_expression
+    ORDER BY column ASC/DESC
+    LIMIT count OFFSET COUNT;
+```
+
+Core Principal :   *finding the data that we need in a database, and then filtering that data down into something that can be processed and understood as quickly as possible.*
+
+1. `FORM` and `JOINS`
+   
+   first executed to determine the total working set of data that is being queried.
+
+2. `WHERE`
+   
+   Once we have the total working set of data, the first-pass `WHERE` constraints are applied to the individual rows, and rows that do not satisfy the constraint are discarded.
+   
+   > Aliases in the `SELECT` part of the query are not accessible. since they do not match with column of the total set.
+
+3. `GROUP BY`
+   
+   1. The remaining rows after the `WHERE` constraints are applied are then grouped based on common values in the column specified in the `GROUP BY`
+
+4. ## `HAVING`
+   
+   1. If the query has a `GROUP BY` clause, then the constraints in the `HAVING` clause are then applied to the grouped rows, discard the grouped rows that don't satisfy the constraint.
+
+5. ## `SELECT`
+   
+   1. Any expressions in the `SELECT` part of the query are finally computed.
+
+6. ## `DISTINCT`
+   
+   1.  rows with duplicate values in the column marked as `DISTINCT` will be discarded.
+
+7. ## `ORDER BY`
+   
+   1. the rows are then sorted by the specified data in either ascending or descending order.
+   
+   2. >  Since all the expressions in the `SELECT` part of the query have been computed, *you can reference aliases in this clause.*
+
+       
+
+8. ## `LIMIT` / `OFFSET`
+   
+    1. rows that fall outside the range specified by the `LIMIT` and `OFFSET` are discarded
