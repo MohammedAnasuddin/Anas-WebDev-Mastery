@@ -406,3 +406,15 @@ Core Principal :   *finding the data that we need in a database, and then filte
 8. ## `LIMIT` / `OFFSET`
    
     1. rows that fall outside the range specified by the `LIMIT` and `OFFSET` are discarded
+
+![](.\SELECT\SELECT%20SQL.png)
+
+## USEFUL Functions
+
+1. `YEAR(DATE)`:  To get YEAR from the Date
+
+2. `LEN(TEXT)`: TO get the length of the text
+
+3. `LEFT(TEXT, no_of_characters)` : Gets specified number of characters from LEFT side of text.
+
+4. `RIGHT(TEXT, no_of_characters)` : Gets specified number of characters from Right side of text.
