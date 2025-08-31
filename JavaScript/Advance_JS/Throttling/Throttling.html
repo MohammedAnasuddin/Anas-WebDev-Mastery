@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>timeoutId: <span id="status"></span> </h3> 
+    <h3>Click_Count: <span id="cc"></span> </h3> 
+    <button id="btn"> Get User Info </button>
+    <script>
+       console.time("requested at")
+       
+       function throttler(fn, delay){
+        let timeout = null;
+
+        return function (){
+           
+            if(timeout==null){
+                fn()
+                timeout= setTimeout(()=>{
+                    timeout=null; 
+                    document.getElementById("status").innerHTML = `${timeout}`
+                },delay)
+
+            }
+            
+            document.getElementById("status").innerHTML = `${timeout}`
+ 
+        }
+       }
+
+
+       function getUserInfo(){
+        console.timeLog("requested at");
+       }
+
+       const throttled_getUserInfo = throttler(getUserInfo, 3000)
+
+       let click_count = 0;
+
+    document.getElementById("btn").addEventListener("click",()=>{
+        
+        click_count++;
+        document.getElementById("cc").innerText = `${click_count}`
+        throttled_getUserInfo()
+    })
+    </script> 
+</body>
+</html>

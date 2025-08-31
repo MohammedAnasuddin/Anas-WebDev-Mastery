@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+    <h2>Debouncing Demo</h2>
+    <input type="text" id="search" />
+
+
+    <script>
+        console.time("requested at")
+        function debounce(fn, delay){
+            let timer= null;
+            return function (...args){   //> Passing down all the event arguments
+                if(timer){
+                    clearTimeout(timer)
+                } 
+
+                timer = setTimeout(()=>{
+                    fn(...args)
+                }, delay)
+            }
+            
+        }
+        function getResults(e){
+            console.timeLog("requested at")
+            console.log(`Requested ${e.target.value} `)
+        }
+
+        let debounced_getResults = debounce(getResults,300)
+
+        document.getElementById('search').addEventListener("input", debounced_getResults )
+    </script>
+</body>
+</html>
