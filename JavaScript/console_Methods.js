@@ -61,6 +61,7 @@
     console.log("Group-1 Child-2")
     console.log("Group-1 Child-3")
     console.groupEnd("Group-1")
+    
     console.group("Group-2")
     console.log("Group-2 Child-1")
     console.log("Group-2 Child-2")

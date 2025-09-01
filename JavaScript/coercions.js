@@ -26,7 +26,7 @@ console.log("Boolean Coercion", result2, typeof result)
 
 
 //. Numeric Coercions
-//> Activates when aritmetic, bitwise, comparions operators are used in the Expression
+//> Activates when arithmetic, bitwise, comparisons operators are used in the Expression
 
 
 //. == and ====

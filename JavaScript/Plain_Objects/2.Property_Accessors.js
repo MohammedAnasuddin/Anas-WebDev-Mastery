@@ -17,7 +17,7 @@
         
   
     //- objects are sometimes called associative arrays — they map strings to values 
-    //> in the same way that arrays map numbers to values.
+    //> in the same way that arrays map indexes to elements.
             let obj = {
                       Key_1:"value_1",
                       Key_2:"value_2",
@@ -41,9 +41,9 @@
     //Tip : You can have a space between Object [key]
     console.log("Space is allowed: ",obj ["Key_1"]) 
 
-    //Tip: SUe this when the key of an property is incorrect indentifier
+    //Tip: Use this when the key of an property is incorrect identifier
     //> for example if key is @type , JS will throw error 
-    //- so use .["@type"] toa cess the property without error.
+    //- so use .["@type"] to access the property without error.
     
     //Note: Using expression can cause 
     //

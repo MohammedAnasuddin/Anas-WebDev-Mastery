@@ -6,7 +6,7 @@
 let arr = [0,1,2,3]
 /*
 . Internally it looks like 
-arr{
+arr={
     0:0,
     1:1,
     2:2,

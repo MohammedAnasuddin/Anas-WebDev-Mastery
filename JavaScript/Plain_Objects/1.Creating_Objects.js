@@ -52,7 +52,8 @@
         console.log("but can create_obj.Key_1: ",create_obj.Key_1); //value_1 
         console.log("since my prototype is: ",create_obj.__proto__)
 
-        //Note: Object.create() allows to pass new properties to the new Object created using property descriptors
+        //Note: Object.create() allows to pass new properties to the new Object 
+        //- created using property descriptors
     
     //. using Object.assign()
         //> appends the properties from source_ObjectS to a single target_object
@@ -73,7 +74,7 @@
         console.table(obj_1); 
         //> All the properties of "obj_3" and "obj_4" are appended to "obj_1"
         //Note: Properties in the target object are overwritten by properties in the sources if they have the same key.
-        //Note: Only appends the Enumerable and OWn Properties of the "source_objects" to the "target_object"
+        //Note: Only appends the Enumerable and Own Properties of the "source_objects" to the "target_object"
 
 //. Storage of Object:
 //> Objects (and arrays) are not copied — they are referenced.

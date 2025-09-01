@@ -35,7 +35,7 @@
     let [, , c , d] = arr
     console.log(c,d)
 
-    //. Destructuring Arrays oa Objects
+    //. Destructuring Arrays as Objects
     //> syntax: let/const {index: identifier } = arr
     let {0:zero} = arr
     console.log(zero);

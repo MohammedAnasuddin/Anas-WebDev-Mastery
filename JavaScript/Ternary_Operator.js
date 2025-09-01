@@ -3,7 +3,8 @@
 //> Syntax:  condition ? exprIfTrue : exprIfFalse
 //Note: Conditions are evaluated based on Truthy and Falsy rules.
 
-//Tip: Use this Initialize variables with a default when the required value is not available.
+//Tip: Use this Initialize variables with a default when the 
+//Tip: required value is not available.
 
 let user ={
     name:""

@@ -1,5 +1,7 @@
 //. switch
-//> evaluates an expression, matching the expression's value against a series of case clauses, and executes statements after the first case clause with a matching value, until a break statement is encountered.
+//> evaluates an expression, matching the expression's value against a series of
+//>  case clauses, and executes statements after the first case clause 
+//> with a matching value, until a break statement is encountered.
 //Note: Executes the statements from first matched case until a break statement.
 
 switch("1"){
@@ -16,7 +18,8 @@ switch("1"){
 
 
 //. Same Cases in switch
-    //>if a match is already found, subsequent case clause expressions will not be evaluated
+    //>if a match is already found, subsequent case clause expressions will not be 
+    //> evaluated
 switch("1"){
  case "1":
     console.log("First");
@@ -30,7 +33,8 @@ switch("1"){
 
 
 //. Fall -Through
-//> When the switch statement finds this first case that matches the expression, it does a fall-through where it runs the remaining cases after the matched case
+//> When the switch statement finds this first case that matches the expression,
+//>  it does a fall-through where it runs the remaining cases after the matched case
 
 //Note: To avoid fall through use break statement
 
@@ -58,7 +62,8 @@ switch(1){
 
 
 //. default
-//> If no match is found, execution will start from the default clause, and execute all statements after that.
+//> If no match is found, execution will start from the default clause, 
+//> and execute all statements after that.
 
 switch(false){
     case 1:
@@ -73,7 +78,8 @@ switch(false){
 //- Default can be positioned anywhere in the switch-case
 
 //. Scopes in switch
-//> all the variables declared in the cases are created with respect to the scope of switch body
+//> all the variables declared in the cases are created with respect to the 
+//> scope of switch body
 
 try {
 

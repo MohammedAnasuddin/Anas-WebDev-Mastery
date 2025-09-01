@@ -6,7 +6,7 @@
         
         //. Checking a property is enumerable or not.
         //> Use Object.propertyIsEnumerable("property_key")
-        //Note: Object.propertyIsEnumerable("property_key") only checks for Object's OWN Properties.
+        //Note: only checks for Object's OWN Properties.
     
     //. Own properties:
         //>  properties that belong directly to the object itself, not inherited from its prototype chain.
@@ -15,7 +15,7 @@
 //. Traversing Objects:
     //. 1. using Object.keys, Object.values, Object.entries
     //> Returns the properties, keys as an array
-    //> Object.entries returns a Array containing all the properties as Individual 2-element Array
+    //> Object.entries returns a Array containing all the properties as Individual 2-elements Array
     //> Eg: [[key_1,value_1], [key_2,value_2], ... , [key_N,value_N]]
     //Note: These methods only traverse over Enumerable Properties which are own to the object.
     
@@ -41,7 +41,7 @@
     //x non-enumerable(non_loop) and non-own(source_prop) does not considered in the array.
 
  //. for-in Loop:
-    //> Loops over all the enumerable(loopable) properties of an Objecct
+    //> Loops over all the enumerable(loopable) properties of an Object
     //Note: Also Loops over non-own(inherited) enumerable properties as well
 
     console.log("Looping using for-in")
@@ -52,7 +52,7 @@
     //> has logged  i.,e both current and source object are considered
     //x non_loop, src_no_loop has not logged since they are not enumerable.
 
-//. To get Both Enumerable and NOn-Enumerable properties of an Object:
+//. To get Both Enumerable and Non-Enumerable properties of an Object:
     //> use Reflect.ownKeys(obj)
     //> Returns an array of keys of all properties.
     console.table(Reflect.ownKeys(source_obj))

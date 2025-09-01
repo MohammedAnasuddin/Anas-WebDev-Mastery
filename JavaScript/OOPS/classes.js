@@ -9,7 +9,7 @@ let new_class = class{
 }
 
 //- or
-//> replace teh function keyword
+//> replace the function keyword with "class"
 class new_class_2{
 
 }
@@ -26,7 +26,7 @@ class new_class_2{
 //. static elements
 //> static properties (fields and methods) are defined 
 //> on the class itself instead of each instance.
-//> static elements should be accessed using classnmae since they belong to class not object 
+//> static elements should be accessed using classname since they belong to class not object 
 //> classname.static_element;
 
 //- a element static by prefixing "static" keyword 
@@ -36,10 +36,10 @@ class new_class_2{
 //> similar to object properties
 //x Don't use let,var and const to declare fields
 //- can use modifiers private and public
-//> use  "this.field" to access value in the class
+//> use  "this.field" to access value of the Instance.
 
 //. private elements
-//> use #element_name(call hash element_name) to create the element
+//> use #element_name(read it as "hash element_name") to create the element
 //Note: Every private element should be unique, no duplicates.
 
 class demo{

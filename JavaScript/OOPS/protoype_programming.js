@@ -5,13 +5,16 @@
 //> JS is OOPL but its Prototype based itself
 
 //. Prototype mean extra properties and functionalities given for the data type
-    //> Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+    //> Prototypes are the mechanism by which JavaScript objects inherit features 
+    //> from one another.
     //> Prototype are built-in properties  
 
 //. Prototype Chain
-    //> Prototype is a object it also have its own prototype properties make a prototype chain 
+    //> Prototype is a object it also have its own prototype properties 
+    // > make a prototype chain 
     //> the chain ends when a prototype object is reached with null as prototype property.
-    //Note: Property of an object pointing to prototype properties of that object is not a prototype property
+
+    //Note: Property of an object referencing to prototype properties of that object is not a prototype property
     //> Basic Sample Chain: My DT Variable->__proto__prototype Object of DT->__proto__->Object Prototype->__proto__null
     //- myArr[]->__proto__ Array -> __proto__ Object ->__proto__null
 
@@ -42,10 +45,11 @@ console.log("Custom added prototypes for mac:",Object.getPrototypeOf(mac))
     //. Using Dunder __
     //x This is deprecated
     //> Syntax: __proto__:source_object
-    let computer_1= {cpu:12,
-        RAM:6}
-        let dell = {model:13, 
-            __proto__:computer_1}
+    let computer_1= {cpu:12, RAM:6}
+        let dell = {
+            model:13, 
+            __proto__:computer_1
+        }
             
             //> Now dell could access all the properties of computer
             console.log(dell.__proto__) //12 6
@@ -58,7 +62,8 @@ console.log("Custom added prototypes for mac:",Object.getPrototypeOf(mac))
     let source={id:"12344"}
     let obj = {model:13}
     Object.setPrototypeOf(obj,source)
-    //Note: The first parameter should be object only it returns nothing if it's a Number , String
+    //Note: The first parameter should be object only 
+    //Note: it returns nothing if it's a Number , String
     //Note: prototype should be a Obj and can't be null
    let a =10
    Object.setPrototypeOf(a,source)
@@ -83,7 +88,7 @@ console.log("Custom added prototypes for mac:",Object.getPrototypeOf(mac))
 //> use obj.prototype.property = value
 //Note: this only exist to constructors not instances
 let demo = new Number(3)
-//demo.prototype.toWord = function(){return 'three'} //x is wrong since demo is instance
+//demo.prototype.toWord = function(){return 'three'} //x is wrong since demo is an instance
 //- use Number(Here Constructor) 
 
     //- if you just use Obj.prototype = new_obj  whole prototype is  changed and reference of the constructor is lost

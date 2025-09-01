@@ -19,7 +19,7 @@ console.log("Current Moment: ",now.getTime()); //1747905764105
     
    
     console.log("using offset: ",now.getTimezoneOffset()) //-330 
-    //- This is the locale is 5hrs 30mins behind UTC
+    //- This is the locale is 330mins behind UTC
 
 
 //. Format Date 

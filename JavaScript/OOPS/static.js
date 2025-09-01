@@ -1,4 +1,4 @@
-//> Properties can only be accessed by the class
+//> Static Properties can only be accessed by the class
 //> Instances cannot access these properties
 
 
