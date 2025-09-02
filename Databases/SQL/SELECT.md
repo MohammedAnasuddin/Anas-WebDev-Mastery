@@ -138,6 +138,12 @@ ORDER BY column ASC/DESC;
 
 > `ASC` is the default sorting order if nothing is specified.
 
+##### Multi Level Sorting
+
+```sql
+ORDER BY column_A [ASC | DESC], column_B [ASC | DESC], ..., column_N [ASC | DESC];
+```
+
 #### Limiting Results
 
 `LIMIT` and `OFFSET` clauses, which are a useful optimization to indicate to the database the subset of the results you care about.
