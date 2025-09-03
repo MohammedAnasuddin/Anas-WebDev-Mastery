@@ -1,6 +1,7 @@
 //. setTimeout()
 //> method of the Window interface sets a timer 
 //> which executes a function or specified piece of code once the timer expires.
+//Note: SetTImeout Executes the callback asap after delay only if callback is empty
 
 //> Syntax: setTimeout(funcRef,delay,param)
 //- params are the values to the mentioned function Reference
@@ -31,3 +32,23 @@ setTimeout(()=>{
 //> setTimeout() function will not pause execution of other functions in the functions stack.
 //> setTimeout() cannot be used to create a pause. 
 
+
+//. What if delay is set to 0ms
+console.log("First")
+
+setTimeout(() => {
+    console.log("Second from Timeout")
+    
+}, 0);
+
+console.log("Third")
+
+/* 
+> Output
+First
+Third
+Second from Timeout
+*/
+
+// - The callback of setTimeout will only execute if callStack is empty 
+//> Here even though delay is 0ms the callback is added to queue and next line is executed. 

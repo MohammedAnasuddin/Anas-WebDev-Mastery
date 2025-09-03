@@ -1,11 +1,12 @@
 console.log("Bismillah");
-// console.log(globalThis);
-// console.log("globalThis==global",globalThis==global);
 
-// const {cal_sum, cal_product} = require("./operations")
-// console.log("3+4 = ",cal_sum(3,4));
-// console.log("3*4 = ",cal_product(3,4));
+const crypto = require("node:crypto")
 
-const calculations = require("./Calculations");
 
-console.log(calculations)
+
+crypto.pbkdf2("anas", "salt", 100000, 64, "sha512", (err,key)=>{
+    console.log("Key form async: ", key);
+})
+
+
+console.log("Key form Sync",crypto.pbkdf2Sync("anas", "salt", 1000000, 64, "sha512"))
