@@ -176,8 +176,6 @@ shorthand for : `npm run start`
 
 If the `<script/>` is not provided then it will execute the command of the `bin` property from the `package.json` of the specified package.
 
-
-
 ## npm init and npm create
 
 `npm init <initializer>?`:  can be used to set up a new or existing npm package.
@@ -208,8 +206,6 @@ To solve this `npm` introduced `npm create` For better DX
 
 3. Same process of `npm init`.
 
-
-
 Trying out:
 
 ```bash
@@ -224,8 +220,6 @@ Hence proved that 'create' is an alias for 'init' introduced for better
 DX for creatng a new project.
 ```
 
-
-
 ## npm vs others
 
 | Tool                           | Type                                   | Purpose                                                | Key Features                                                                                                                                       | When to Use                                                     |
@@ -234,8 +228,6 @@ DX for creatng a new project.
 | **pnpm** (Performant npm)      | Package Manager (alternative)          | Same as npm, but faster and more space-efficient       | - Uses **symlinks + global content-addressable store** → saves disk space- Much faster installs- Stricter dependency rules (avoids “phantom deps”) | ✅ If you want **speed + less disk usage**                       |
 | **Yarn**                       | Package Manager (alternative)          | Same as npm, with focus on performance and determinism | - Introduced **lockfiles** first (deterministic installs)- Workspaces (monorepo support)- Two major versions (Classic v1, Berry v2+)               | ✅ If you work with **monorepos** or need Yarn-specific features |
 | **curl**                       | CLI Tool (not a package manager)       | Download data/files from URLs                          | - Transfers data via HTTP, HTTPS, FTP, etc.- Can fetch files, APIs, scripts- Often used with `                                                     | bash` to run installers                                         |
-
-
 
 ### Why `pnpm` is faster than npm
 
@@ -249,7 +241,3 @@ DX for creatng a new project.
 | **Lockfile**               | `package-lock.json` (ok but bigger).                                                        | `pnpm-lock.yaml` (smaller, faster to parse).                                                               |
 | **First Install**          | Slower, because it downloads everything.                                                    | Slightly faster than npm.                                                                                  |
 | **Subsequent Installs**    | Still slow if project is big.                                                               | **Blazingly fast** (just links from global store).                                                         |
-
-
-
-
