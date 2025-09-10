@@ -1,28 +1,40 @@
 const express = require("express")
-const userAuth = require("./middleware/auth").auth_userRoute
-
+const connectDB = require("./config/Database")
+const User = require("./models/User");
 const app = express()
 
-console.log(app)
+app.patch("/addUser", async (req,res)=>{
+    try{
 
-
-app.use("/user", 
-   [ userAuth, 
-        (req,res,next)=>{
-        console.log("Second Handler")
-        next();
+        const user_instance = new User({
+            firstName:"Mohammed",
+            lastName:"Anasuddin",
+            gender:"M",
+            mail:"connect.@gmail.com",
+        })
+        
+        await user_instance.save()
+        res.send("user has been added to the database")
+    } catch(e){
+        console.log("Error adding user", e)
+        res.status(500).send("Error adding user to the database.")
     }
-]
-)
 
-app.use("/user/getProfile", (req,res)=>{
-    console.log("Profile: ",{name:"Anas", uid:"12332434"})
-    res.send({name:"Anas", uid:"12332434"})
 })
 
+connectDB()
+.then(
+    ()=>{
+    console.log("DB Connected")
+    app.listen(5000, ()=>{
+        console.log("Server Successfully listening on PORT 5000")
+    });
+    }    
+)
+.catch(
+    (err) => {
+        console.log(err);
+    }
+)
 
 
-
-app.listen(5000, ()=>{
-    console.log("Server Successfully listening on PORT 5000")
-});
