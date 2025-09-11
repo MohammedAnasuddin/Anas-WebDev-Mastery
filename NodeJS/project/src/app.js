@@ -1,6 +1,9 @@
 const express = require("express")
 const connectDB = require("./config/Database")
 const User = require("./models/User");
+const { validateNewUser } = require("./utilities/validateNewUser");
+const {validateLogin} = require("./utilities/validateLogin")
+const bcrypt = require("bcrypt")
 const app = express()
 
 
@@ -9,15 +12,54 @@ app.use(express.json())
 
 app.post("/addUser", async (req,res)=>{
     try{
-        const new_user = new User(req.body)
-        new_user.save()
-        res.status(200).send("user Sucesfully added to the DB")
+        const validated_details= validateNewUser(req.body)
+       
+        
+        const hashed_password = await bcrypt.hash(validated_details.password,10);
+        validated_details.password = hashed_password;
+        
+        const new_user = new User(validated_details)
+        await  new_user.save()
+        res.status(200).send("user Successfully added to the DB")
     } catch(e){
-        console.log("Error adding user", e)
-        res.status(500).send("Error adding user to the database.")
+        console.log("Error adding user"+ e.message)
+        res.status(400).send("Error adding user to the database."+e.message)
     }
 
 })
+
+app.get("/login", async(req, res)=>{
+    try{
+        // Validating Request
+        // console.log(req.body)
+        const creds = validateLogin(req.body)
+        
+        // Getting the User form DB
+        const user = await User.findOne({"mail": creds.mail})
+       console.log("User: ", user)
+
+        if(!user){
+            throw new Error("User Don't Exist")
+        }
+        console.log("Req password: ",creds.password , "user hash: ", user.password)
+        //Checking the password
+        const doPasswordsMatch = await bcrypt.compare(creds.password, user.password)
+        
+        if(doPasswordsMatch){
+           res.send("Login Sucessful") 
+        }
+        else{
+            res.send("Not Found")
+        }
+        
+
+    } catch(e){
+        console.log("login fail due to ",e.message)
+        res.status(400).send("Login Failed"+e.message)
+    }
+})
+
+
 
 app.get("/getUser", async (req,res)=>{
     const requested_name = req.body.name;
@@ -50,19 +92,28 @@ app.delete("/deleteUser", async (req,res)=>{
     
 })
 
-app.patch("/updateUser", async (req,res)=>{
+app.patch("/updateUser/:userID", async (req,res)=>{
+    const documentID = req.params.userID
     const updates = req.body
+    const ALLOWED_UPDATES = ["lastName", "about" ]
     try{
-        const updatedDocument = await User.findByIdAndUpdate(updates.id, {
-            "firstName":updates.firstName,
-             "mail":updates.mail
-        },{returnDocument:"after"})
-        res.status(300).send("Successfully updated Doc")    
+        const isUpdateAllowed = Object.keys(updates).every((key)=> ALLOWED_UPDATES.includes(key))
+
+        if(isUpdateAllowed){
+            const updatedDocument = await User.findByIdAndUpdate(documentID, {
+                "lastName":updates.lastName,
+            },
+            {returnDocument:"after", runValidators:true}
+        )
+        res.status(300).send("Successfully updated Doc")  
+        } else{
+            throw new Error("Not allowed to perform the Update")
+        }
     }
     catch(e){
         console.log(e)
         
-        res.status(400).send("Something Went Wrong")
+        res.status(400).send("Can't Update"+e.message)
     }
 })
 
