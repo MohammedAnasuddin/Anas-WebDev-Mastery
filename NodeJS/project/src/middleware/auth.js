@@ -5,6 +5,7 @@ const User = require("../models/User")
 const auth_middleware = async (req,res,next)=>{
   try{
     const cookies = req.cookies
+
     const {token} = cookies
         if(!token){
             throw new Error("Token Does Not Exist")
