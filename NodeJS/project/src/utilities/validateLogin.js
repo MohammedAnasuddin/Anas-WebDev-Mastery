@@ -5,7 +5,7 @@ function validateLogin(credentials){
     if(isEmail(mail)==false || password==null){
         throw new Error("Faulty Credentilas")
     }
-    console.log(credentials)
+   
 
     return {mail , password};
 }

@@ -4,11 +4,18 @@ const User = require("./models/User");
 const { validateNewUser } = require("./utilities/validateNewUser");
 const {validateLogin} = require("./utilities/validateLogin")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+const cookieParser = require("cookie-parser")
+const { auth_middleware} = require("./middleware/auth")
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const app = express()
 
 
-app.use(express.json())
 
+app.use(express.json())
+app.use(cookieParser())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.post("/addUser", async (req,res)=>{
     try{
@@ -28,7 +35,7 @@ app.post("/addUser", async (req,res)=>{
 
 })
 
-app.get("/login", async(req, res)=>{
+app.post("/login", async(req, res)=>{
     try{
         // Validating Request
         // console.log(req.body)
@@ -36,29 +43,38 @@ app.get("/login", async(req, res)=>{
         
         // Getting the User form DB
         const user = await User.findOne({"mail": creds.mail})
-       console.log("User: ", user)
 
         if(!user){
             throw new Error("User Don't Exist")
         }
-        console.log("Req password: ",creds.password , "user hash: ", user.password)
         //Checking the password
         const doPasswordsMatch = await bcrypt.compare(creds.password, user.password)
         
         if(doPasswordsMatch){
+           const token = await user.generateJWT()
+           res.cookie("token",token)
            res.send("Login Sucessful") 
         }
         else{
-            res.send("Not Found")
+            res.send("Password Don't Match")
         }
         
 
     } catch(e){
-        console.log("login fail due to ",e.message)
-        res.status(400).send("Login Failed"+e.message)
+        res.status(400).send("Login Failed")
     }
 })
 
+app.get("/profile",auth_middleware, async(req,res)=>{
+    try {
+       const required_user = req.user
+        res.send(required_user);
+    } catch (error) {
+        res.status(400).send("Unable to Fetch the Profile")
+    }
+
+
+})
 
 
 app.get("/getUser", async (req,res)=>{
