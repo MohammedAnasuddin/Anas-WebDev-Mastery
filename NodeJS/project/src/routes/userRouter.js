@@ -2,6 +2,7 @@ const express = require('express')
 const { auth_middleware} = require("../middleware/auth")
 const validateEditRequest = require("../utilities/validateEditRequest")
 const User = require("../models/User")
+const Connection = require("../models/Connection")
 
 
 
@@ -103,6 +104,101 @@ userRouter.patch("/edit", auth_middleware, async(req,res)=>{
     }
 })
 
+userRouter.get("/user/requests/received", 
+    auth_middleware,
+    async (req,res) =>{
+        // Job: Get all Pending Connection Request for the current User
+    try{
+        const currentUser = req.user
+        const requests = await Connection.find({
+            toUserId:currentUser._id
+        }).populate("fromUserId", ["firstName"]) 
+        
 
-//  Object.keys(req.body).forEach((key)=> req.user[key] = req.body[key])
-module.exports = userRouter;
+        console.log(requests)
+        const data = requests.map(doc => "Request From "+doc.fromUserId.firstName+" "+doc._id)
+        res.send(data)
+    }catch(e){
+        res.status(400).send("Can t find requests due to: "+e.message)
+    }
+
+    }
+)
+
+userRouter.get("/user/connections", auth_middleware,
+    async (req,res) => {
+        const currentUser = req.user
+
+        const connectionRequests = await Connection.find({
+            $or:[
+                {toUserId:currentUser._id, status:"accepted"},
+                {fromUserId:currentUser._id, status:"accepted"},
+                
+            ]
+        }).populate("fromUserId", ["firstName"])
+
+        const data = connectionRequests.map((row)=>{
+            if(row.fromUserId._id.toString() === currentUser._id.toString()){
+                return row.toUserId;
+            }
+            return row.fromUserId;
+        });
+
+        res.send(data)
+    }
+
+   
+)
+
+ userRouter.get("/feed", auth_middleware, async (req,res)=>{
+        //Gets eligible connections user can connect to
+            //Excludes:
+            //x The users which  has accepted / rejected the currentUser 
+                //> fromUserId:current && (status="accepted"|"rejected") ||
+                //> toUserId:current && (status="accepted"|"rejected")   
+            //x The users which he sent connections to (status != "intrested")
+                 //> fromUserId:current && (status!="intrested") ||
+                //> toUserId:current && (status!="intrested") 
+            //x The user itself
+            //- Should match the user Intrest 
+
+            //. Optimized
+            //> Create set .of Id's from the conncetion scollection where fromUserId:current || toUserId:current 
+            //> This will gives us the non required users list
+            //> Traverse on User COllection where the id does not includes in the above list.
+
+
+            const currentUser = req.user
+            const page = req.query.page || 1;
+            const skipCount = (page-1)*3 
+            const userConnections = await Connection.find({
+                $or:[
+                    {fromUserId:currentUser._id},
+                    {toUserId:currentUser._id}
+                ]
+            })
+
+            const exclusionList = new Set([currentUser._id.toString()])
+
+         for(const conn of userConnections) {
+            exclusionList.add(conn.fromUserId.toString());
+            exclusionList.add(conn.toUserId.toString());
+            }
+
+            const feed = await User.find({
+                _id: {
+                    $nin: Array.from(exclusionList)
+                }
+            }).skip(skipCount).limit(3)
+
+
+            res.send(feed);
+
+
+        
+
+
+
+    })
+
+    module.exports=userRouter

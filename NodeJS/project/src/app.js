@@ -5,6 +5,7 @@ const userRouter = require("./routes/userRouter")
 const cookieParser = require("cookie-parser")
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
+const requestsRouter = require("./routes/requestsRouter")
 const app = express()
 
 
@@ -14,6 +15,7 @@ app.use(cookieParser())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/", authRouter)
 app.use("/", userRouter)
+app.use("/", requestsRouter)
 
 
 
