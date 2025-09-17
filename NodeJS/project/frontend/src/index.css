@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "tailwindcss-radix-colors/dist/red.css";
+@import "tailwindcss-radix-colors/dist/slate.css";
+@import "tailwindcss-radix-colors/dist/blue.css";
