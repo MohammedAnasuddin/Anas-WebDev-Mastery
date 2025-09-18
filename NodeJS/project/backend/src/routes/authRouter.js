@@ -33,17 +33,27 @@ authRouter.post("/login", async(req, res)=>{
         
         // Getting the User form DB
         const user = await User.findOne({"mail": creds.mail})
+  
 
         if(!user){
             throw new Error("User Don't Exist")
         }
         //Checking the password
-        // const doPasswordsMatch = await bcrypt.compare(creds.password, user.password)
+        const doPasswordsMatch = await bcrypt.compare(creds.password, user.password)
         
-        if(true){
+        if(doPasswordsMatch){
            const token = await user.generateJWT()
            res.cookie("token",token)
-           res.send("Login Sucessful") 
+           const {firstName,lastName,about,gender} = user
+           res.status(200).json({
+            "message":"Login Sucessful",
+            "data":{
+                firstName,
+                lastName,
+                gender,
+                about
+            }
+           }) 
         }
         else{
             res.send("Password Don't Match")
@@ -51,7 +61,7 @@ authRouter.post("/login", async(req, res)=>{
         
 
     } catch(e){
-        res.status(400).send("Login Failed")
+        res.status(400).send("Login Failed"+e.message)
     }
 })
 
