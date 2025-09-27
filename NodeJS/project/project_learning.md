@@ -271,6 +271,109 @@ body * {
 }
 ```
 
-
 ## USing axios
+
 axios use
+
+## Setting up REdux Store
+
+https://redux-toolkit.js.org/tutorials/quick-start
+
+## Navigating Using useNavigate
+
+```jsx
+import {useNavigate} from "react-router-dom"
+
+const navigate = useNavigate()
+
+After getting respsone 
+return navigate('path')
+```
+
+## Tailwind Size Grid
+
+We know tailwinf uses fractions for percentages the maximun are `h-x/6` and `w-1/12` so we can create avisual grid to viaualize this and size and place elements accordingly 
+
+add the below css class to `index.css`
+
+```css
+/* globals.css */
+.size-grid {
+  position: relative;
+}
+
+.size-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none; /* This is the key to making it non-interactive */
+  background-image:
+    linear-gradient(to right, rgba(75, 85, 99, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(75, 85, 99, 0.6) 1px, transparent 1px);
+  background-size:
+    calc(100% / 12) 100%,
+    100% calc(100% / 6);
+  background-position:
+    -1px -1px,
+    -1px -1px;
+}
+```
+
+
+
+## Configuring Layout
+
+You've correctly identified the two conflicting goals that make CSS layout tricky:
+
+1. You want a parent container that can **grow** with its content.
+2. You want children inside that container to use **fractional** sizes (like `h-1/2`).
+
+The industry-standard way to solve this is by using the right tool for the right job: **Flexbox** for the overall page shell and **CSS Grid** for your main content area.
+
+### Step 1: Set the Stage with a "Document" Layout
+
+First, forget about the `Profile` component for a moment and think about the whole page (`Body.jsx`). For a content page that needs to grow (like a blog or profile), the best practice is a "Document" layout.
+
+- **Goal:** Make the page at least as tall as the screen, but allow it to grow taller and scroll if the content is long.
+- **How:**
+  1. The main wrapper in `Body.jsx` gets `min-h-screen` and `flex flex-col`. This makes it a vertical column that is *at least* the height of the screen.
+  2. The `<main>` element (which holds your `<Outlet/>`) gets `flex-grow`. This tells it: "take up all the empty space between the Navbar and Footer, and feel free to grow even bigger if your content needs it."
+
+Now, your `<Profile>` component lives inside a container (`<main>`) that can grow.
+
+### Step 2: Choose the Right Tool for the `Profile` Layout
+
+Now we're inside `Profile.jsx`. You want to arrange items in rows **and** columns. This is a two-dimensional problem.
+
+- **Flexbox** is best for arranging items in **one dimension** (either a single row or a single column).
+- **CSS Grid** is designed specifically for arranging items in **two dimensions** (rows and columns at the same time).
+
+For your task, **CSS Grid is the perfect tool.** It directly solves the paradox because you define the fractional layout on the parent, and the parent can still grow with its content.
+
+### Step 3: Craft the Grid on the Parent (`L1`)
+
+This is where you define your layout rules.
+
+1. **Make it a Grid:** Add the `grid` class to your `L1` container. It's now a grid.
+2. **Define Responsive Columns:** Add `grid-cols-1` and `md:grid-cols-2`.
+   - `grid-cols-1`: This is the mobile-first default. It means "have one column". All your `L2` divs will stack vertically.
+   - `md:grid-cols-2`: At the medium breakpoint and up, it switches to a two-column layout.
+3. **Add Spacing:** Add `gap-4` to create a consistent space between all grid items.
+
+### Step 4: Place the Children (`L2-*`) in the Grid
+
+Now you tell the children how to behave within the grid you just defined.
+
+1. **`L2-1` and `L2-2`:** You don't need to do anything special! On mobile, they will each take up a row in the single column. On medium screens, they will automatically fill the first and second slots of the first row in your two-column grid.
+2. **`L2-3` (and any others below):** To make this item span the full width on medium screens, you add `md:col-span-2`. This tells it: "take up two columns of space." Since the grid only has two columns, this forces it to occupy its own row.
+
+### Step 5: Handle Height and "Extendability"
+
+This is the final piece. Since the parent `L1` can now grow, you don't want to give the children a fixed fractional height like `h-1/2`.
+
+Instead, you give them a **minimum height**, like `min-h-96`.
+
+- **Why?** This gives your `L2` divs a nice default size so they don't collapse when empty. But, if you put a lot of text or a tall image inside one, it is free to **grow taller**, and the parent `L1` and the whole page will grow with it.
+
+This combination is the industry-standard solution. It's powerful, responsive, and solves the exact problem you've been wrestling with.

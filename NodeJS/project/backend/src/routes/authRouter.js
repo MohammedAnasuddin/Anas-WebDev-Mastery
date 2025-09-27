@@ -44,14 +44,16 @@ authRouter.post("/login", async(req, res)=>{
         if(doPasswordsMatch){
            const token = await user.generateJWT()
            res.cookie("token",token)
-           const {firstName,lastName,about,gender} = user
+           const {firstName,lastName,about,gender,age,photoURL} = user
            res.status(200).json({
             "message":"Login Sucessful",
             "data":{
                 firstName,
                 lastName,
                 gender,
-                about
+                about,
+                age,
+                photoURL
             }
            }) 
         }
@@ -67,11 +69,13 @@ authRouter.post("/login", async(req, res)=>{
 
 
 authRouter.post("/logout", async(req, res)=>{
-    res.cookie("token", null , {
-        expiresIn: new Date(Date.now())
-    })
-    res.clearCookie("token");
-    res.send("Logout Successful")
+    // The res.clearCookie() function is the recommended way to clear a cookie.
+    // It works by setting the cookie's value to empty and its expiration date to the past.
+    // For it to work, the options (especially `path` and `domain`) must match
+    // the options used when the cookie was set.
+    // By specifying `path: '/'`, we ensure it's cleared for the whole site.
+    res.clearCookie("token", { httpOnly: true, path: '/' })
+    res.status(200).send("Logout Successful");
 })
 
 module.exports = authRouter

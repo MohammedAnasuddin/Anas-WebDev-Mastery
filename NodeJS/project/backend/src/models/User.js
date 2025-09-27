@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema({
         upperCase: true,
         enum:["M","F"]
     },
+    age:{
+        type:Number,
+    },
+    photoURL:{
+        type:String
+    },
     mail: {
         type:String,
         required:true,

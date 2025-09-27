@@ -1,5 +1,7 @@
 # SEO For DEVs
 
+> Checkout NEXT JS SEO Course
+
 `Before`
 
 Add Keywords and Links to boost rankings, visibility.
@@ -115,18 +117,22 @@ Spread info about our site as max as possible.
       `<link rel="canonical" href="Original_URL"`
 
 5. Use heading in hierarchical order 
+
 6. Optimize the URL's by including understandable and meaningful parameters.
+
 7. Use descriptive Anchor (button) test : Don't use Click Here, use the service/action provides Login, Buy Now. 
+
 8. Use `rel="nofollow"` for redirecting links(not all) on your site, to let google knows that don't boost the rankings of the redirected site by the redirection through our site.
+   
    1. Google flag the sites which earns by  giving redirects various sites to boost their rankings.
+
 9. Optimize Images:  
+   
    1. Provide good alt text and file_name for the image.
    2. Use width and shift to avoid layout shifts
    3. Use `WebP , AVIF` Formats these are fast
 
             ![](https://photutorial.com/wp-content/uploads/2022/10/image-format-size-comparison-graph-648x486.png)
-
-
 
 10. Optimize for Mobile
     
@@ -158,8 +164,6 @@ Spread info about our site as max as possible.
     
     1. `disallow: url`
 
-
-
 ### Sitemaps
 
 These are guidelines for crawlers so that they don't miss any page of the site. It's a XML file present in the root directory  which contains all the sites available on the site.
@@ -170,14 +174,8 @@ Priorities of the page can also be configured in the sitemap file. Pages with th
 
 Change frequency tells the crawler that this page changes for every x days visit it again after this date.
 
-
-
 Ensure all the important pages are listed 
 
 You can also submit your sitemap in Google Search Console for faster scans by crawlers.
 
-
-
 To Boost Rankings Site should create different kinds of Content.
-
-

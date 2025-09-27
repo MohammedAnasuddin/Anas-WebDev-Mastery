@@ -189,10 +189,13 @@ userRouter.get("/user/connections", auth_middleware,
                 _id: {
                     $nin: Array.from(exclusionList)
                 }
-            }).skip(skipCount).limit(3)
+            }).skip(skipCount).limit(3).select("-password -mail -createdAt -updatedAt")
 
 
-            res.send(feed);
+            res.json({
+                "message":"User Feed Received",
+                "data": feed
+            });
 
 
         
