@@ -53,17 +53,16 @@ userRouter.delete("/deleteUser", auth_middleware,async (req,res)=>{
     
 })
 
-userRouter.patch("/updateUser/:userID", auth_middleware, async (req,res)=>{
-    const documentID = req.params.userID
+userRouter.patch("/updateUser", auth_middleware, async (req,res)=>{
+    const documentID = req.user._id;
     const updates = req.body
-    const ALLOWED_UPDATES = ["lastName", "about" ]
+    const ALLOWED_UPDATES = ["lastName", "about", "firstName","age","photoURL" ]
     try{
         const isUpdateAllowed = Object.keys(updates).every((key)=> ALLOWED_UPDATES.includes(key))
 
         if(isUpdateAllowed){
-            const updatedDocument = await User.findByIdAndUpdate(documentID, {
-                "lastName":updates.lastName,
-            },
+            const updatedDocument = await User.findByIdAndUpdate(documentID, 
+                updates,
             {returnDocument:"after", runValidators:true}
         )
         res.status(300).send("Successfully updated Doc")  

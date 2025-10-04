@@ -1,0 +1,11 @@
+Front,Back
+"What is React Fiber?","React Fiber is an ongoing reimplementation of React's core algorithm. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames."
+"What is the difference between a React Component and a React Element?","A React Component is a function or class that defines what React Elements should be rendered. A React Element is a plain object describing a component instance or DOM node and its desired properties."
+"What are the two types of logic inside a React Component?","1. Rendering code: pure calculation returning JSX.\n2. Event handlers: nested functions containing side effects caused by user actions."
+"Why must React Components be pure?","Rendering should be pure so that calling a component multiple times with the same props and state produces the same JSX. Components should not mutate preexisting variables or objects outside their scope."
+"What is the difference between Class and Functional Components?","Class Components create an instance for each component and have lifecycle methods. Functional Components are simple functions that return React Elements and do not create instances."
+"What does React reconciliation mean?","Reconciliation is React's process of comparing the new React Element tree to the previous one, and updating the DOM minimally by calculating the differences."
+"What is the purpose of 'key' props in React lists?","Keys help React identify which items have changed, been added, or removed. They should be stable, predictable, and unique among siblings to optimize rendering and prevent unnecessary DOM changes."
+"Explain React's diffing algorithm and its optimization rules.","1. Compare element types: different types => rebuild tree.\n2. Same type: update only changed attributes.\n3. Use keys to hint which child elements are stable.\nThis reduces complexity from O(n^3) to O(n)."
+"Why are props immutable in React?","Immutable props allow React to quickly determine changes, optimize rendering, and prevent unintended side effects."
+"What tool helps debug React components and their state/props?","React DevTools: allows inspection of props and state for each component, tracing issues back to their source and isolating problems."

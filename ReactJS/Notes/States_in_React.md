@@ -282,7 +282,7 @@ Sometimes, you want the state of two components to always change together. To do
    
    1. A `child` can’t set the `state`  directly because it’s defined inside the `Parent`. 
    2. The `Parent` component needs to *explicitly allow* the `Child` component to change its state by passing an event handler down as a prop. (Generally, these would be callbacks which calls the `setState()` of the `common state` to update it)
-
+   
    pass the `setState` of the `state` as a function in props.
 
 ```js

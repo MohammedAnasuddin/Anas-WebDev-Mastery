@@ -47,7 +47,7 @@ function Body() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow bg-base-200">
+      <main className="flex-grow bg-base-200 ">
         {loading ? (
           <div className="hero h-full">
             <span className="loading loading-spinner loading-lg"></span>
