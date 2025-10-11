@@ -113,3 +113,82 @@ By remounting your component, React verifies that navigating away and back would
 When you implement the cleanup well, there should be no user-visible difference between running the Effect once vs running it, cleaning it up, and running it again.
 
 If your Effect fetches something, the cleanup function should either abort the fetch or ignore its result:
+
+
+
+## Avoiding the flicker
+
+When a lazy component (Which takes time to build itself) renders for the first time a quick glimpse is visible before the `useEffect()` gets called this is very bad UX.
+
+The "quick glimpse" or "flicker" you're seeing is a disadvantage of fetching data inside a `useEffect()` hook.
+
+
+
+### Solution 1: The Classic Fix (Using a Loading State)
+
+The most direct way to fix this inside your component is to introduce a **loading state**. This prevents the initial, incomplete UI from ever being shown.
+
+1. Add a `loading` state variable, initialized to `true`.
+2. In your `useEffect`, set the loading state to `false` after the API call completes (whether it succeeds or fails).
+3. In your render logic, check the `loading` state. If it's `true`, show a loading indicator (like a spinner) or return `null`. If it's `false`, render your component with the data.
+
+
+
+### Solution 2: The Modern React Router Fix (Loaders)
+
+ Using `react-router-dom` (v6.4+), there is a much better, more integrated way to handle this: **Route Loaders**.
+
+A `loader` is a function you define on your route that runs **before** your component even renders. This means the data is ready and available on the very first render, completely eliminating the flicker and the need for `useEffect` and loading states inside your component.
+
+**How it works:**
+
+1. **Define a `loader` function** for your route. This function fetches the data and returns it.
+   
+   ```js
+   //. File_of_Router_Setup.jsx
+   
+   // In your router setup file
+   import { createBrowserRouter } from "react-router-dom";
+   import Profile from "./components/Profile";
+   import axios from "axios";
+   
+   // This loader function fetches data BEFORE the Profile component renders
+   export async function profileLoader() {
+     const response = await axios.get(SERVER_URL + "/user-profile", { withCredentials: true });
+     return response.data;
+   }
+   
+   const router = createBrowserRouter([
+     {
+       path: "/profile",
+       element: <Profile />,
+       loader: profileLoader, // Assign the loader to the route
+     },
+     // ... other routes
+   ]);
+   
+   ```
+2. **Use the `useLoaderData` hook** in your component to access the data.
+3. ```js
+   //Component_File.jsx
+   import { useLoaderData } from "react-router-dom";
+   // ... other imports
+   
+   function Profile() {
+     // No useEffect, no useState for data, no loading state!
+     const currentUser = useLoaderData(); // 🚀 Data is here on the first render
+   
+     // ... rest of your component logic using `currentUser`
+     
+     if (!currentUser?.data) {
+       // This check might still be useful for data integrity, 
+       // but the loader handles the "not loaded yet" case.
+       return <Navigate to="/login" />;
+     }
+   
+     return (
+       // ... your JSX
+     );
+   }
+   
+   ```

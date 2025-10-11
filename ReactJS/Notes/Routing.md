@@ -399,4 +399,29 @@ use `:/id`  use : and specify the identifier , making a Dynamic URL
 
 here `resId` is referred as `param`  
 
-pass this `resId` to api url to get the specific data and render the component
+pass this `resId` to api url to get the specific data and render the component.
+
+### Link v/s useNavigate()
+
+- `<Link>` is for users: **Use it when you want to render a clickable element** (like a standard `<a>` tag) that the user can click to navigate. This is **declarative**.
+  
+  - When a user clicks it, it prevents the browser's default full-page reload and instead tells React Router to update the URL and render the new route.
+  - Use it when you want standard link behaviors like right-click -> "Open in new tab".
+
+- **`useNavigate()` is for your code:** Use it when you need to navigate programmatically in response to an event or a condition in your code (like after a form submission or API call). This is **imperative**.
+  
+  - The `useNavigate()` hook gives you a function that you can call whenever you want to trigger navigation from within your component's logic.
+  -  Use it When navigation depends on a condition in your code.
+
+```js
+ const navigate = useNavigate();
+
+ const handleClick = async () => {
+     // Steps to handle Event
+      navigate('path'); 
+  };
+```
+
+> This pattern is very common in React. A hook gives you a function, and you call that function later with specific arguments based on user actions or other events.
+> 
+> Hence even though `useNavigate()` does not have any parameters (placeholders) during it's initialization but the function returned by it (stored in `navigate` variable) takes `path` as parameter.

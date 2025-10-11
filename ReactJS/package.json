@@ -4,7 +4,7 @@
   "description": "Creating our own Production Ready React App",
   "scripts": {
     "test": "jest",
-    "start": "parcel .\\Building\\Project.html",
+    "start": "parcel .\\Building\\P.html",
     "build": "parcel build index.html",
     "notes": "parcel Notes\\notes.html"
   },
