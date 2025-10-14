@@ -38,8 +38,8 @@ Every Commit is dependent on Previous Commit.
 
 parent is a pointer which points to previous commit , for Intial Commit it points to null.
 
-
-
 ## Branches
+
+
 
 
