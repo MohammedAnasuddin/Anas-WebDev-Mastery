@@ -1,5 +1,13 @@
 # Version Control
 
+## Version Control
+
+Helps to add checkpoints to the code by tracking the changes in the codes.
+
+
+
+
+
 ## Creating a Git Repo
 
 `git init` is the command that *turns a normal directory into a Git repository*. When you run it, Git creates a special, hidden subdirectory named `.git`.
@@ -9,8 +17,6 @@
 This `.git` folder is the heart of your repository. It contains all the necessary files and data for Git to track your project's history.
 
 The reason this folder is hidden (by starting with a `.`) it  *keeps configuration files and metadata from cluttering your workspace.* **You aren't meant to edit the files inside `.git` directly. Doing so could corrupt your repository's history.** You *interact with it safely through Git commands.*
-
-
 
 The `.git` directory is the complete, self-contained database for your repository. It holds every piece of information Git needs:
 
@@ -180,7 +186,6 @@ git push --set-upstream remote_repo_name brnach_name
 
 > you can use `-u` instead of `--set-upstream` in the command
 > 
-> 
 > It creates a "tracking" link between your local `my-branch` and the remote `origin/my-branch`. Once this link is set, you can simply use `git pull` and `git push` from that branch, and Git will know exactly which remote branch to sync with. And yes, this command will create the branch on the remote repository if it doesn't already exist.
 
 use this we could normally push changes since a tracking relation has established without the worry of "Are we pushing on the right branch?"
@@ -345,8 +350,6 @@ git stash apply copied-id
 
 Resolve any merge conflicts if occurred
 
-
-
 ## Git Fetch
 
 `git fetch` connects to your remote repository (like `origin`) and **downloads all the new data** (new commits, new branches, etc.) that you don't have yet.
@@ -358,5 +361,3 @@ git fetch branch_name
 ```
 
 So, `git pull` is just a shortcut that does `git fetch` and `git merge` in one step. Using `git fetch` separately gives you a moment to pause, review, and make sure the incoming changes won't cause problems.
-
-

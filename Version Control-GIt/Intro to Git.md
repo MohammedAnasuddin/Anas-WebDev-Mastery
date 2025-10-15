@@ -2,8 +2,6 @@
 
 ## A Short History of Git
 
-A Short History of Git
-
 During the early years of the Linux kernel maintenance (1991–2002), changes to the software were passed around as patches and archived files
 
 In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked.

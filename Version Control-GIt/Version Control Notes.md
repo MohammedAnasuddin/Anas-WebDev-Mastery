@@ -22,7 +22,7 @@ Contains all the paths of files which Git does not track changes for it. Use any
 
 1. `git init` : Initializes a folder as repo i.e, the folder is being tracked by Git from now on. This commands creates a hidden folder `.git` which shall contains all teh history of the changes in the folder.
 
-2. `git add file1 fileN` :  Git Starts tracking the Mentioned Files.  This puts the files into staging area. 
+2. `git add file1 fileN` : Git Starts tracking the Mentioned Files. This puts the files into staging area.
 
 3. `git commit -m "Reason to Commit"`: To commit changes
 
