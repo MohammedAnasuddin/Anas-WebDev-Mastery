@@ -14,7 +14,7 @@ Since its birth in 2005, Git has evolved and matured to be easy to use and yet r
 
 other systems (CVS, Subversion, Perforce, and so on) think of the information they store as a set of files and the changes made to each file over time (this is commonly described as delta-based version control).
 
-Git thinks of its data more like a series of snapshots of a miniature filesystem. With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot.
+Git thinks of its data more like a series of snapshots of a miniature filesystem. *With Git, every time you commit, or save the state of your project, Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot.*
 
 To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots.
 
@@ -28,19 +28,31 @@ This also means that there is very little you can’t do if you’re offline or 
 
 Everything in Git is checksummed before it is stored and is then referred to by that checksum. This means it’s impossible to change the contents of any file or directory without Git knowing about it.
 
-The mechanism that Git uses for this checksumming is called a SHA-1 hash. This is a 40-character string composed of hexadecimal characters (0–9 and a–f) and calculated based on the contents of a file or directory structure in Git.
+> In Git, "checksumming" refers to the process of calculating a unique identifier.
+> 
+> - **Data Integrity and Uniqueness:** 
+>   
+>   Every piece of data in Git – whether it's a file's content (blob), a directory's structure (tree), or a commit (which includes metadata like author, date, and pointers to parent commits and trees) – is hashed. This produces a unique SHA-1 hash, a 40-character hexadecimal string. This hash acts as a fingerprint for that specific data.
+> 
+> - **Immutability:** 
+>   
+>   If even a single bit of the data changes, the calculated SHA-1 hash will also change drastically. This means that if someone tries to alter a file, a directory structure, or a commit in a Git repository, the associated checksum will no longer match, immediately indicating that the data has been tampered with. This ensures the integrity and authenticity of your project's history.
 
-Git stores everything in its database not by file name but by the hash value of its contents.
+
+
+**Git stores everything in its database not by file name but by the hash value of its contents.**
 
 ### The Three States
 
-Git has three main states that your files can reside in: modified, staged, and committed:
+Git has three main states that your files can reside in: `modified`, `staged`, and `committed`:
 
-Modified means that you have changed the file but have not committed it to your database yet.
-Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
-Committed means that the data is safely stored in your local database.
+1. Modified means that you have changed the file but have not committed it to your database yet.
 
-The staging area is a file, generally contained in your Git directory, that stores information about what will go into your next commit. Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.
+2. Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
+
+3. Committed means that the data is safely stored in your local database.
+
+*The staging area is a file, generally contained in your Git directory, that stores information about what will go into your next commit.* Its technical name in Git parlance is the “index”, but the phrase “staging area” works just as well.
 
 The Git directory is where Git stores the metadata and object database for your project.
 

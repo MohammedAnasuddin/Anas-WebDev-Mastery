@@ -4,10 +4,6 @@
 
 Helps to add checkpoints to the code by tracking the changes in the codes.
 
-
-
-
-
 ## Creating a Git Repo
 
 `git init` is the command that *turns a normal directory into a Git repository*. When you run it, Git creates a special, hidden subdirectory named `.git`.
