@@ -38,8 +38,6 @@ Everything in Git is checksummed before it is stored and is then referred to by 
 >   
 >   If even a single bit of the data changes, the calculated SHA-1 hash will also change drastically. This means that if someone tries to alter a file, a directory structure, or a commit in a Git repository, the associated checksum will no longer match, immediately indicating that the data has been tampered with. This ensures the integrity and authenticity of your project's history.
 
-
-
 **Git stores everything in its database not by file name but by the hash value of its contents.**
 
 ### The Three States
