@@ -1,0 +1,7 @@
+/* Apply transitions to all elements, but disable them when the 'theme-switching' class is present on the html tag */
+.theme-switching * {
+  transition: none !important;
+}
+body *:not(.theme-switching *) {
+  @apply transition-colors duration-400;
+}
