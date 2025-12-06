@@ -19,3 +19,12 @@ NodeJS/project/src/config/secrets.js
 /NodeJS/project/backend/node_modules
 Version Control-GIt/.github/instructions/snyk_rules.instructions.md
 /Deployment/sample-project/backend/node_modules
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md
+/TypeScript/TypeScript Repo/.github
+/TypeScript/TypeScript Repo/node_modules
