@@ -43,7 +43,7 @@ function Component(){
 }
 ```
 
-` useEffect` “delays” a piece of code from running until that render is reflected on the screen.
+`useEffect` “delays” a piece of code from running until that render is reflected on the screen.
 
 we wrap the side effect with `useEffect` to move it out of the rendering calculation.
 
@@ -104,6 +104,8 @@ React will call your `cleanup function` each time before the Effect runs again, 
 
 The cleanup function should stop or undo whatever the Effect was doing.
 
+“A cleanup function in `useEffect` is used to clean up or undo side effects created by the effect.”  “It is executed before the effect runs again and when the component unmounts.”
+
 ### Effect in Development Mode:
 
 React intentionally remounts your components in development to find bugs like in the last example. **The right question isn’t “how to run an Effect once”, but “how to fix my Effect so that it works after remounting”.**
@@ -114,15 +116,11 @@ When you implement the cleanup well, there should be no user-visible difference 
 
 If your Effect fetches something, the cleanup function should either abort the fetch or ignore its result:
 
-
-
 ## Avoiding the flicker
 
 When a lazy component (Which takes time to build itself) renders for the first time a quick glimpse is visible before the `useEffect()` gets called this is very bad UX.
 
 The "quick glimpse" or "flicker" you're seeing is a disadvantage of fetching data inside a `useEffect()` hook.
-
-
 
 ### Solution 1: The Classic Fix (Using a Loading State)
 
@@ -131,8 +129,6 @@ The most direct way to fix this inside your component is to introduce a **loadi
 1. Add a `loading` state variable, initialized to `true`.
 2. In your `useEffect`, set the loading state to `false` after the API call completes (whether it succeeds or fails).
 3. In your render logic, check the `loading` state. If it's `true`, show a loading indicator (like a spinner) or return `null`. If it's `false`, render your component with the data.
-
-
 
 ### Solution 2: The Modern React Router Fix (Loaders)
 
@@ -168,7 +164,9 @@ A `loader` is a function you define on your route that runs **before** your 
    ]);
    
    ```
+
 2. **Use the `useLoaderData` hook** in your component to access the data.
+
 3. ```js
    //Component_File.jsx
    import { useLoaderData } from "react-router-dom";
@@ -179,7 +177,7 @@ A `loader` is a function you define on your route that runs **before** your 
      const currentUser = useLoaderData(); // 🚀 Data is here on the first render
    
      // ... rest of your component logic using `currentUser`
-     
+   
      if (!currentUser?.data) {
        // This check might still be useful for data integrity, 
        // but the loader handles the "not loaded yet" case.

@@ -1,12 +1,10 @@
-- [x] React BTS
+**“React solves the problem of managing complex and frequently changing user interfaces.”**
 
-- [x] States
+**“With vanilla JavaScript, developers must manually track state changes and update the DOM, which becomes hard to maintain as the application grows.”**
 
-- [ ] Hooks
+**“React abstracts this by letting developers describe how the UI should look for a given state, and it handles updating the UI when the state changes.”**
 
-- [ ] Folder Structure and Best Practices.
-
-- [ ] Logging props to see attributes?
+# 
 
 # Working of React
 
@@ -86,7 +84,7 @@ Two types of logic inside React components:
 
 ##### **Components must be Pure:**
 
-React’s rendering process must always be pure. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure.
+**React’s rendering process must always be pure**. Components should only *return* their JSX, and not *change* any objects or variables that existed before rendering—that would make them impure.
 
 This means that **calling this component multiple times will produce different JSX!** And what’s more, if *other* components read `guest`, they will produce different JSX, too, depending on when they were rendered! That’s not predictable.
 
@@ -330,7 +328,8 @@ keeping remaining intact.
   </div>
 
 ```
-For example:  if two siblings  components of same type and use indexes as keys
+For example:  if two siblings  components of same type and use 
+indexes as keys
 
 ```js
 arr = ["Top","Bottom"]
@@ -339,7 +338,7 @@ arr = ["Top","Bottom"]
 <Sibling-2 Key={1} instance="Second"> {arr[1}</Sibling-2>
 ```
 
-Suppose a new Element is added at the beginning of the Array, since `keys` are `indexes` all the he `key` values will increase by 1, this violates the whole purpose ha each component should a unique and permanently assigned `key`.
+**Suppose a new Element is added at the beginning of the Array, since `keys` are `indexes` all the he `key` values will increase by 1, this violates the whole purpose ha each component should a unique and permanently assigned `key`.**
 
 **Tips on Generating Keys:**
 

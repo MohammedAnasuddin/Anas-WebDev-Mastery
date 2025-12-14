@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom/client'
 
 //. Passing props in a Component
 //> Uses { } to use the JS value
-//> Syntax: <Component prop_1 = { value_1} prop_2: {value_2} />
+//> Syntax: <Component prop_1 = { value_1} prop_2= {value_2} />
 //Note: ReactDOM makes a collection of all the props into a single Object because
 //Note:  React component functions only accepts a single argument, a props object
 //Note: Only custom attributes are considered in the above object.
@@ -33,7 +33,7 @@ const user_profile = all_props.profile
 
 console.log("Received used_details: ",user_details)
 
-//- to simplify the process of receiving props we Destructure the received_ Object  at parameters
+//- to simplify the process of receiving props we Destructure the received_ Object at parameters
 
 }
 

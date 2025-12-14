@@ -108,7 +108,8 @@ createRoot(document.getElementById('root')).render(
 - **`queryFn: functionName`**: This tells `useQuery` which *function to call to get the data.*
 
 - **Return Values**: The **hook gives us back an object with the current status of the query**. We are destructuring the most important properties:
-  - `data`: Will contain our quotes once the fetch is successful.
+  
+  - `data`: Will contain our data once the fetch is successful.
   - `isLoading`: A boolean that is `true` only during the very first fetch.
     - **`isPending` (and `isLoading`)**: This is for the **initial data load**. It is only `true` when the query is fetching for the very first time and has no data in its cache yet.
     - **`isFetching`**: This is for **any data fetch**. It is `true` whenever the query function is running, which includes both the initial load *and* any subsequent background refetches (like when you re-focus the window or a query is refetched automatically).
@@ -260,5 +261,3 @@ import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client
 > `NOTE`
 > 
 > The `PersistQueryClientProvider` component expects its `persistOptions` prop to be an object. Hence use `{{ }}`
-
-
