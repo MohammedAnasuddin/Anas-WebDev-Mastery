@@ -1,4 +1,5 @@
 ### Working of await
+
 1. JS suspends the termination of async function when encountered await i.e, removes from call stack 
 2. and wait until the promise attached to await gets resolved. 
 3. After resolved, the execution of async function resumes i.e, it is again placed in the call stack

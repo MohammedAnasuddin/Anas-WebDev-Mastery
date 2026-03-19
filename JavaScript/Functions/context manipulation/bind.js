@@ -1,5 +1,5 @@
 //. bind(thisContext,args)
-//> returns a new function by connecting the context provided to teh function mentioned
+//> returns a new function by connecting the context provided to the function mentioned
 
 let person={
  name:'Lorem'

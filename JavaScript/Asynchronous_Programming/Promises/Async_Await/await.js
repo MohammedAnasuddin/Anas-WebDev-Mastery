@@ -3,7 +3,7 @@
 //> pauses the execution of the surroundings until attached promise is settled.
 //> await returns the promise result.
 
-//- returns the value if resoled or throws the error if rejected
+//- returns the value if resolved or throws the error if rejected
 
 //Note: await is valid only in 2 spots
     //>1. Inside a async function
