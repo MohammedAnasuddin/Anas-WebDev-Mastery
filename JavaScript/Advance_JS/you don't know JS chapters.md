@@ -85,11 +85,7 @@ You must master:
 
 - arrow lexical this
 
----
 
-### ✅ Chapter 3 — Class/Object Prototypes
-
-Prototype chain execution lookup.
 
 ---
 
